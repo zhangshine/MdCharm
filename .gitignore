@@ -21,4 +21,4 @@
 *.1
 
 /src/res/mdcharm.rc
-/src/src/version.h
+/src/MdCharm/version.h

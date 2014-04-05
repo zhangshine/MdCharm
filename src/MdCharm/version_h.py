@@ -1,8 +1,8 @@
 import os
 import sys
-from datetime import datetime, tzinfo
+from datetime import datetime
 
-version_h = '''
+version_h = """
 #ifndef VERSION_H
 #define VERSION_H
 
@@ -31,8 +31,9 @@ const char* const BUILT_TIME_STR = STRINGIFY(BUILT_TIME);
 #undef STRINGIFY
 
 #endif
-'''
-mdcharm_rc = '''
+"""
+
+mdcharm_rc = """
 IDI_ICON1	ICON	DISCARDABLE	"mdcharm.ico"
 IDI_ICON2	ICON	DISCARDABLE	"markdown\markdown.ico"
 
@@ -64,11 +65,7 @@ BLOCK "VarFileInfo"
 	VALUE "Translation",0x0409,0x04E4
 }}
 }}
-'''
-'''
-Usage: version_h.py git_bin_path version_file_path debug|release, like
-        version_h.py C:/Progra~1/Git/bin/git.exe version.h ../res/mdcharm.rc debug
-'''
+"""
 
 if __name__ == '__main__':
     if len(sys.argv)!=5:
@@ -103,8 +100,3 @@ if __name__ == '__main__':
     rcFile = file(sys.argv[3], 'w+')
     rcFile.write(RealRcFile)
     rcFile.close()
-#    print RealVersionH
-#    print '--------------'
-#    print tag
-#    print versionList
-#    print revision

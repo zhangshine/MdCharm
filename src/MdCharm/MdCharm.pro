@@ -60,7 +60,7 @@ CONFIG(release, debug|release){
     version_h.target = version.h
 
     win32:version_h.commands = python.exe ../../src/MdCharm/version_h.py git.exe ../../src/MdCharm/version.h ../../src/MdCharm/mdcharm.rc release
-    unix:version_h.commands = /usr/bin/python ../../src/MdCharm/version_h.py /usr/bin/git ../../src/MdCharm/version.h ../../src/res/mdcharm.rc release
+    unix:version_h.commands = python ../../src/MdCharm/version_h.py git ../../src/MdCharm/version.h ../../src/res/mdcharm.rc release
 
     version_h.depends = version_h_nonexist
     version_h.CONFIG += recursive
