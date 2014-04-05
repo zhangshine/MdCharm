@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language casesensitive="false">
+    <Keywords>
+        <Keyword>and</Keyword>
+        <Keyword>include_once</Keyword>
+        <Keyword>list</Keyword>
+        <Keyword>abstract</Keyword>
+        <Keyword>global</Keyword>
+        <Keyword>private</Keyword>
+        <Keyword>echo</Keyword>
+        <Keyword>interface</Keyword>
+        <Keyword>as</Keyword>
+        <Keyword>static</Keyword>
+        <Keyword>endswitch</Keyword>
+        <Keyword>array</Keyword>
+        <Keyword>null</Keyword>
+        <Keyword>if</Keyword>
+        <Keyword>endwhile</Keyword>
+        <Keyword>or</Keyword>
+        <Keyword>const</Keyword>
+        <Keyword>for</Keyword>
+        <Keyword>endforeach</Keyword>
+        <Keyword>self</Keyword>
+        <Keyword>var</Keyword>
+        <Keyword>while</Keyword>
+        <Keyword>isset</Keyword>
+        <Keyword>public</Keyword>
+        <Keyword>protected</Keyword>
+        <Keyword>exit</Keyword>
+        <Keyword>foreach</Keyword>
+        <Keyword>throw</Keyword>
+        <Keyword>elseif</Keyword>
+        <Keyword>include</Keyword>
+        <Keyword>__FILE__</Keyword>
+        <Keyword>empty</Keyword>
+        <Keyword>require_once</Keyword>
+        <Keyword>do</Keyword>
+        <Keyword>xor</Keyword>
+        <Keyword>return</Keyword>
+        <Keyword>implements</Keyword>
+        <Keyword>parent</Keyword>
+        <Keyword>clone</Keyword>
+        <Keyword>use</Keyword>
+        <Keyword>__CLASS__</Keyword>
+        <Keyword>__LINE__</Keyword>
+        <Keyword>else</Keyword>
+        <Keyword>break</Keyword>
+        <Keyword>print</Keyword>
+        <Keyword>eval</Keyword>
+        <Keyword>new</Keyword>
+        <Keyword>catch</Keyword>
+        <Keyword>__METHOD__</Keyword>
+        <Keyword>case</Keyword>
+        <Keyword>exception</Keyword>
+        <Keyword>php_user_filter</Keyword>
+        <Keyword>default</Keyword>
+        <Keyword>die</Keyword>
+        <Keyword>require</Keyword>
+        <Keyword>__FUNCTION__</Keyword>
+        <Keyword>enddeclare</Keyword>
+        <Keyword>final</Keyword>
+        <Keyword>try</Keyword>
+        <Keyword>this</Keyword>
+        <Keyword>switch</Keyword>
+        <Keyword>continue</Keyword>
+        <Keyword>endfor</Keyword>
+        <Keyword>endif</Keyword>
+        <Keyword>declare</Keyword>
+        <Keyword>unset</Keyword>
+        <Keyword>true</Keyword>
+        <Keyword>false</Keyword>
+        <Keyword>namespace</Keyword>
+        <Keyword>trait</Keyword>
+        <Keyword>goto</Keyword>
+        <Keyword>instanceof</Keyword>
+        <Keyword>insteadof</Keyword>
+        <Keyword>__DIR__</Keyword>
+        <Keyword>__NAMESPACE__</Keyword>
+        <Keyword>__halt_compiler</Keyword>
+    </Keywords>
+    <Contains>
+        <Contain name="comment">
+            <Begin>//</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="comment">
+            <Begin>#</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="phpdoc">
+            <Begin>\s@[A-Za-z]+</Begin>
+        </Contain>
+        <Contain name="comment">
+            <Begin>/\*</Begin>
+            <End>\*/</End>
+            <RefContains>
+                <RefContain>phpdoc</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="comment">
+            <ExcludeBegin>true</ExcludeBegin>
+            <Begin>__halt_compiler.+?;</Begin>
+            <EndWithParent>true</EndWithParent>
+        </Contain>
+        <Contain name="backslash_escape">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\\[\s\S]</Begin>
+            <Relevance>0</Relevance>
+        </Contain>
+        <Contain name="string">
+            <Begin>&lt;&lt;&lt;['"]?\w+['"]?$</Begin>
+            <End>^\w+;</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="preprocessor">
+            <Begin>&lt;\?php</Begin>
+            <Relevance>10</Relevance>
+        </Contain>
+        <Contain name="preprocessor">
+            <Begin>\?&gt;</Begin>
+        </Contain>
+        <Contain name="variable">
+            <Begin>\$+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*</Begin>
+        </Contain>
+        <Contain name="comment|block">
+            <Begin>/\*</Begin>
+            <End>\*/</End>
+        </Contain>
+        <Contain name="string|pos">
+            <Begin>'</Begin>
+            <End>'</End>
+            <Relevance>0</Relevance>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|quote">
+            <Begin>"</Begin>
+            <End>"</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+            <Relevance>0</Relevance>
+        </Contain>
+        <Contain name="string|ref1">
+            <Begin>b"</Begin>
+            <End>"</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|ref2">
+            <Begin>b'</Begin>
+            <End>'</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="number|ref1">
+            <Begin>\b(0b[01]+)</Begin>
+            <Relevance>0</Relevance>
+        </Contain>
+        <Contain name="number|ref2">
+            <Begin>(\b0[xX][a-fA-F0-9]+|(\b\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?)</Begin>
+            <Relevance>0</Relevance>
+        </Contain>
+
+        <Contain name="params">
+            <Begin>\(</Begin>
+            <End>\)</End>
+            <RefContains refSelf="true">
+                <RefContain notSetRef="true">number|ref2</RefContain>
+                <RefContain notSetRef="true">number|ref1</RefContain>
+                <RefContain notSetRef="true">string|ref2</RefContain>
+                <RefContain notSetRef="true">string|ref1</RefContain>
+                <RefContain notSetRef="true">string|quote</RefContain>
+                <RefContain notSetRef="true">string|pos</RefContain>
+                <RefContain>comment|block</RefContain>
+                <RefContain notSetRef="true">variable</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="title">
+            <Begin>[a-zA-Z_][a-zA-Z0-9_]*</Begin>
+        </Contain>
+        <Contain name="function">
+            <BeginWithKeyword>true</BeginWithKeyword>
+            <End>{</End>
+            <Keywords>
+                <Keyword>function</Keyword>
+            </Keywords>
+            <Illegal>\$|\[|%</Illegal>
+            <RefContains>
+                <RefContain>title</RefContain>
+                <RefContain>params</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="classRef">
+            <BeginWithKeyword>true</BeginWithKeyword>
+            <EndWithParent>true</EndWithParent>
+            <Keywords>
+                <Keyword>extends</Keyword>
+            </Keywords>
+            <RefContains>
+                <RefContain>title</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="class">
+            <BeginWithKeyword>true</BeginWithKeyword>
+            <EndWithParent>true</EndWithParent>
+            <Keywords>
+                <Keyword>class</Keyword>
+            </Keywords>
+            <Illegal>[:\(\$]</Illegal>
+            <RefContains>
+                <RefContain>classRef</RefContain>
+                <RefContain>title</RefContain>
+            </RefContains>
+        </Contain>
+        <!--<Contain>-->
+            <!--<Begin>=></Begin>-->
+        <!--</Contain>-->
+    </Contains>
+</Language>

@@ -1,0 +1,6 @@
+[submodule "MarkdownTest"]
+	path = MarkdownTest
+	url = https://github.com/fletcher/MMD-Test-Suite.git
+[submodule "samples"]
+	path = samples
+	url = https://github.com/fletcher/MultiMarkdown-Gallery.git

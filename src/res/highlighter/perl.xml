@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language casesensitive="true">
+    <Keywords>
+        <Keyword>getpwent</Keyword>
+        <Keyword>getservent</Keyword>
+        <Keyword>quotemeta</Keyword>
+        <Keyword>msgrcv</Keyword>
+        <Keyword>scalar</Keyword>
+        <Keyword>kill</Keyword>
+        <Keyword>dbmclose</Keyword>
+        <Keyword>undef</Keyword>
+        <Keyword>lc</Keyword>
+        <Keyword>ma</Keyword>
+        <Keyword>syswrite</Keyword>
+        <Keyword>tr</Keyword>
+        <Keyword>send</Keyword>
+        <Keyword>umask</Keyword>
+        <Keyword>sysopen</Keyword>
+        <Keyword>shmwrite</Keyword>
+        <Keyword>vec</Keyword>
+        <Keyword>qx</Keyword>
+        <Keyword>utime</Keyword>
+        <Keyword>local</Keyword>
+        <Keyword>oct</Keyword>
+        <Keyword>semctl</Keyword>
+        <Keyword>localtime</Keyword>
+        <Keyword>readpipe</Keyword>
+        <Keyword>do</Keyword>
+        <Keyword>return</Keyword>
+        <Keyword>format</Keyword>
+        <Keyword>read</Keyword>
+        <Keyword>sprintf</Keyword>
+        <Keyword>dbmopen</Keyword>
+        <Keyword>pop</Keyword>
+        <Keyword>getpgrp</Keyword>
+        <Keyword>not</Keyword>
+        <Keyword>getpwnam</Keyword>
+        <Keyword>rewinddir</Keyword>
+        <Keyword>qqfileno</Keyword>
+        <Keyword>qw</Keyword>
+        <Keyword>endprotoent</Keyword>
+        <Keyword>wait</Keyword>
+        <Keyword>sethostent</Keyword>
+        <Keyword>bless</Keyword>
+        <Keyword>s</Keyword>
+        <Keyword>opendir</Keyword>
+        <Keyword>continue</Keyword>
+        <Keyword>each</Keyword>
+        <Keyword>sleep</Keyword>
+        <Keyword>endgrent</Keyword>
+        <Keyword>shutdown</Keyword>
+        <Keyword>dump</Keyword>
+        <Keyword>chomp</Keyword>
+        <Keyword>connect</Keyword>
+        <Keyword>getsockname</Keyword>
+        <Keyword>die</Keyword>
+        <Keyword>socketpair</Keyword>
+        <Keyword>close</Keyword>
+        <Keyword>flock</Keyword>
+        <Keyword>exists</Keyword>
+        <Keyword>index</Keyword>
+        <Keyword>shmgetsub</Keyword>
+        <Keyword>for</Keyword>
+        <Keyword>endpwent</Keyword>
+        <Keyword>redo</Keyword>
+        <Keyword>lstat</Keyword>
+        <Keyword>msgctl</Keyword>
+        <Keyword>setpgrp</Keyword>
+        <Keyword>abs</Keyword>
+        <Keyword>exit</Keyword>
+        <Keyword>select</Keyword>
+        <Keyword>print</Keyword>
+        <Keyword>ref</Keyword>
+        <Keyword>gethostbyaddr</Keyword>
+        <Keyword>unshift</Keyword>
+        <Keyword>fcntl</Keyword>
+        <Keyword>syscall</Keyword>
+        <Keyword>goto</Keyword>
+        <Keyword>getnetbyaddr</Keyword>
+        <Keyword>join</Keyword>
+        <Keyword>gmtime</Keyword>
+        <Keyword>symlink</Keyword>
+        <Keyword>semget</Keyword>
+        <Keyword>splice</Keyword>
+        <Keyword>x</Keyword>
+        <Keyword>getpeername</Keyword>
+        <Keyword>recv</Keyword>
+        <Keyword>log</Keyword>
+        <Keyword>setsockopt</Keyword>
+        <Keyword>cos</Keyword>
+        <Keyword>last</Keyword>
+        <Keyword>reverse</Keyword>
+        <Keyword>gethostbyname</Keyword>
+        <Keyword>getgrnam</Keyword>
+        <Keyword>study</Keyword>
+        <Keyword>formline</Keyword>
+        <Keyword>endhostent</Keyword>
+        <Keyword>times</Keyword>
+        <Keyword>chop</Keyword>
+        <Keyword>length</Keyword>
+        <Keyword>gethostent</Keyword>
+        <Keyword>getnetent</Keyword>
+        <Keyword>pack</Keyword>
+        <Keyword>getprotoent</Keyword>
+        <Keyword>getservbyname</Keyword>
+        <Keyword>rand</Keyword>
+        <Keyword>mkdir</Keyword>
+        <Keyword>pos</Keyword>
+        <Keyword>chmod</Keyword>
+        <Keyword>y</Keyword>
+        <Keyword>substr</Keyword>
+        <Keyword>endnetent</Keyword>
+        <Keyword>printf</Keyword>
+        <Keyword>next</Keyword>
+        <Keyword>open</Keyword>
+        <Keyword>msgsnd</Keyword>
+        <Keyword>readdir</Keyword>
+        <Keyword>use</Keyword>
+        <Keyword>unlink</Keyword>
+        <Keyword>getsockopt</Keyword>
+        <Keyword>getpriority</Keyword>
+        <Keyword>rindex</Keyword>
+        <Keyword>wantarray</Keyword>
+        <Keyword>hex</Keyword>
+        <Keyword>system</Keyword>
+        <Keyword>getservbyport</Keyword>
+        <Keyword>endservent</Keyword>
+        <Keyword>int</Keyword>
+        <Keyword>chr</Keyword>
+        <Keyword>untie</Keyword>
+        <Keyword>rmdir</Keyword>
+        <Keyword>prototype</Keyword>
+        <Keyword>tell</Keyword>
+        <Keyword>listen</Keyword>
+        <Keyword>fork</Keyword>
+        <Keyword>shmread</Keyword>
+        <Keyword>ucfirst</Keyword>
+        <Keyword>setprotoent</Keyword>
+        <Keyword>else</Keyword>
+        <Keyword>sysseek</Keyword>
+        <Keyword>link</Keyword>
+        <Keyword>getgrgid</Keyword>
+        <Keyword>shmctl</Keyword>
+        <Keyword>waitpid</Keyword>
+        <Keyword>unpack</Keyword>
+        <Keyword>getnetbyname</Keyword>
+        <Keyword>reset</Keyword>
+        <Keyword>chdir</Keyword>
+        <Keyword>grep</Keyword>
+        <Keyword>split</Keyword>
+        <Keyword>require</Keyword>
+        <Keyword>caller</Keyword>
+        <Keyword>lcfirst</Keyword>
+        <Keyword>until</Keyword>
+        <Keyword>warn</Keyword>
+        <Keyword>while</Keyword>
+        <Keyword>values</Keyword>
+        <Keyword>shift</Keyword>
+        <Keyword>telldir</Keyword>
+        <Keyword>getpwuid</Keyword>
+        <Keyword>my</Keyword>
+        <Keyword>getprotobynumber</Keyword>
+        <Keyword>delete</Keyword>
+        <Keyword>and</Keyword>
+        <Keyword>sort</Keyword>
+        <Keyword>uc</Keyword>
+        <Keyword>defined</Keyword>
+        <Keyword>srand</Keyword>
+        <Keyword>accept</Keyword>
+        <Keyword>package</Keyword>
+        <Keyword>seekdir</Keyword>
+        <Keyword>getprotobyname</Keyword>
+        <Keyword>semop</Keyword>
+        <Keyword>our</Keyword>
+        <Keyword>rename</Keyword>
+        <Keyword>seek</Keyword>
+        <Keyword>if</Keyword>
+        <Keyword>q</Keyword>
+        <Keyword>chroot</Keyword>
+        <Keyword>sysread</Keyword>
+        <Keyword>setpwent</Keyword>
+        <Keyword>no</Keyword>
+        <Keyword>crypt</Keyword>
+        <Keyword>getc</Keyword>
+        <Keyword>chown</Keyword>
+        <Keyword>sqrt</Keyword>
+        <Keyword>write</Keyword>
+        <Keyword>setnetent</Keyword>
+        <Keyword>setpriority</Keyword>
+        <Keyword>foreach</Keyword>
+        <Keyword>tie</Keyword>
+        <Keyword>sin</Keyword>
+        <Keyword>msgget</Keyword>
+        <Keyword>map</Keyword>
+        <Keyword>stat</Keyword>
+        <Keyword>getlogin</Keyword>
+        <Keyword>unless</Keyword>
+        <Keyword>elsif</Keyword>
+        <Keyword>truncate</Keyword>
+        <Keyword>exec</Keyword>
+        <Keyword>keys</Keyword>
+        <Keyword>glob</Keyword>
+        <Keyword>tied</Keyword>
+        <Keyword>closedirioctl</Keyword>
+        <Keyword>socket</Keyword>
+        <Keyword>readlink</Keyword>
+        <Keyword>eval</Keyword>
+        <Keyword>xor</Keyword>
+        <Keyword>readline</Keyword>
+        <Keyword>binmode</Keyword>
+        <Keyword>setservent</Keyword>
+        <Keyword>eof</Keyword>
+        <Keyword>ord</Keyword>
+        <Keyword>bind</Keyword>
+        <Keyword>alarm</Keyword>
+        <Keyword>pipe</Keyword>
+        <Keyword>atan2</Keyword>
+        <Keyword>getgrent</Keyword>
+        <Keyword>exp</Keyword>
+        <Keyword>time</Keyword>
+        <Keyword>push</Keyword>
+        <Keyword>setgrent</Keyword>
+        <Keyword>gt</Keyword>
+        <Keyword>lt</Keyword>
+        <Keyword>or</Keyword>
+        <Keyword>ne</Keyword>
+        <Keyword>m</Keyword>
+        <Keyword>break</Keyword>
+        <Keyword>given</Keyword>
+        <Keyword>say</Keyword>
+        <Keyword>state</Keyword>
+        <Keyword>when</Keyword>
+    </Keywords>
+    <Contains>
+        <Contain name="id">
+            <ShowClassName>false</ShowClassName>
+            <Begin>[a-zA-Z][a-zA-Z0-9_]*</Begin>
+        </Contain>
+        <Contain name="forref" refLanguageContains="true">
+            <ShowClassName>false</ShowClassName>
+            <Begin>{</Begin>
+            <End>}</End>
+        </Contain>
+        <Contain name="subst" refLanguageContains="true">
+            <Begin>[$@]\{</Begin>
+            <End>\}</End>
+            <Keywords refLanguageKeywords="true"/>
+        </Contain>
+        <Contain name="backslash_escape">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\\[\s\S]</Begin>
+        </Contain>
+        <Contain name="regexp|1">
+            <Begin>(s|tr|y)/(\\.|[^/])*/(\\.|[^/])*/[a-z]*</Begin>
+        </Contain>
+        <Contain name="regexp|2">
+            <Begin>(m|qr)?/</Begin>
+            <End>/[a-z]*</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <!--not set ref -> down-->
+        <Contain name="variable|1">
+            <Begin>\$\d</Begin>
+        </Contain>
+        <Contain name="variable|2">
+            <Begin>[\$\%\@\*](\^\w\b|#\w+(\:\:\w+)*|[^\s\w{]|{\w+}|\w+(\:\:\w*)*)</Begin>
+        </Contain>
+        <Contain name="comment|hash">
+            <Begin>#</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="comment|ref">
+            <Begin>^(__END__|__DATA__)</Begin>
+            <End>\n$</End>
+            <Relevance>5</Relevance>
+        </Contain>
+        <Contain name="comment">
+            <Begin>^\=\w</Begin>
+            <End>\=cut</End>
+            <EndsWithParent>true</EndsWithParent>
+        </Contain>
+        <Contain name="">
+            <ShowClassName>false</ShowClassName>
+            <Begin>-></Begin>
+            <RefContains>
+                <RefContain>id</RefContain>
+                <RefContain>forref</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string">
+            <Begin>q[qwxr]?\s*\(</Begin>
+            <End>\)</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+                <RefContain notSetRef="true">variable|1</RefContain>
+                <RefContain notSetRef="true">variable|2</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string">
+            <Begin>q[qwxr]?\s*\[</Begin>
+            <End>\]</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+                <RefContain notSetRef="true">variable|1</RefContain>
+                <RefContain notSetRef="true">variable|2</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string">
+            <Begin>q[qwxr]?\s*\{</Begin>
+            <End>\}</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+                <RefContain notSetRef="true">variable|1</RefContain>
+                <RefContain notSetRef="true">variable|2</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string">
+            <Begin>q[qwxr]?\s*\|</Begin>
+            <End>\|</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+                <RefContain notSetRef="true">variable|1</RefContain>
+                <RefContain notSetRef="true">variable|2</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string">
+            <Begin>q[qwxr]?\s*\&lt;</Begin>
+            <End>\&gt;</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+                <RefContain notSetRef="true">variable|1</RefContain>
+                <RefContain notSetRef="true">variable|2</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string">
+            <Begin>qw\s+q</Begin>
+            <End>q</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+                <RefContain notSetRef="true">variable|1</RefContain>
+                <RefContain notSetRef="true">variable|2</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string">
+            <Begin>'</Begin>
+            <End>'</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string">
+            <Begin>"</Begin>
+            <End>"</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+                <RefContain notSetRef="true">variable|1</RefContain>
+                <RefContain notSetRef="true">variable|2</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string">
+            <Begin>`</Begin>
+            <End>`</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string">
+            <Begin>{\w+}</Begin>
+        </Contain>
+        <Contain name="string">
+            <Begin>\-?\w+\s*\=\&gt;</Begin>
+        </Contain>
+        <Contain name="number">
+            <Begin>(\b0[0-7_]+)|(\b0x[0-9a-fA-F_]+)|(\b[1-9][0-9_]*(\.[0-9_]+)?)|[0_]\b</Begin>
+        </Contain>
+        <Contain name="sub">
+            <BeginWithKeyword>true</BeginWithKeyword>
+            <End>(\s*\(.*?\))?[;{]</End>
+            <Keywords>
+                <Keyword>sub</Keyword>
+            </Keywords>
+        </Contain>
+        <Contain name="operator">
+            <Begin>-\w\b</Begin>
+        </Contain>
+        <Contain name="noname">
+            <ShowClassName>false</ShowClassName>
+            <Begin>(!|!=|!==|%|%=|&amp;|&amp;&amp;|&amp;=|\*|\*=|\+|\+=|,|\.|-|-=|/|/=|:|;|&lt;|&lt;&lt;|&lt;&lt;=|&lt;=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\?|\[|\{|\(|\^|\^=|\||\|=|\|\||~|\b(split|return|print|reverse|grep)\b)\s*</Begin>
+            <Keywords>
+                <Keyword>split</Keyword>
+                <Keyword>return</Keyword>
+                <Keyword>print</Keyword>
+                <Keyword>reverse</Keyword>
+                <Keyword>grep</Keyword>
+            </Keywords>
+            <RefContains>
+                <RefContain notSetRef="true">comment|hash</RefContain>
+                <RefContain notSetRef="true">comment|ref</RefContain>
+                <RefContain>regexp|1</RefContain>
+                <RefContain>regexp|2</RefContain>
+            </RefContains>
+        </Contain>
+        <!--not set ref-> up-->
+    </Contains>
+</Language>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language casesensitive="true">
+    <Contains>
+        <Contain name="header">
+            <Begin>^#{1,3}</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="header">
+            <Begin>^.+?\n[=-]{2,}$</Begin>
+        </Contain>
+        <Contain name="noname">
+            <ShowClassName>false</ShowClassName>
+            <Begin>&lt;</Begin>
+            <End>&gt;</End>
+            <SubLanguage>xml</SubLanguage>
+        </Contain>
+        <Contain name="bullet">
+            <Begin>^([*+-]|(\d+\.))\s+</Begin>
+        </Contain>
+        <Contain name="strong">
+            <Begin>[*_]{2}.+?[*_]{2}</Begin>
+        </Contain>
+        <Contain name="emphasis">
+            <Begin>\*.+?\*</Begin>
+        </Contain>
+        <Contain name="emphasis">
+            <Begin>_.+?_</Begin>
+        </Contain>
+        <Contain name="blockquote">
+            <Begin>^>\s+</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="code">
+            <Begin>```</Begin>
+            <End>```</End>
+        </Contain>
+        <Contain name="code">
+            <Begin>`.+?`</Begin>
+        </Contain>
+        <Contain name="code">
+            <Begin>^    </Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="horizontal_rule">
+            <Begin>^-{3,}</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="link_label">
+            <Begin>\[.+\]</Begin>
+        </Contain>
+        <Contain name="link_url">
+            <Begin>\(</Begin>
+            <End>\)</End>
+            <ExcludeBegin>true</ExcludeBegin>
+            <ExcludeEnd>true</ExcludeEnd>
+        </Contain>
+        <Contain name="noname">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\[.+?\]\(.+?\)</Begin>
+            <ReturnBegin>true</ReturnBegin>
+            <RefContains>
+                <RefContain>link_label</RefContain>
+                <RefContain>link_url</RefContain>
+            </RefContains>
+        </Contain>
+    </Contains>
+</Language>

@@ -1,0 +1,16 @@
+Notes for myself while pulling together the remaining lose ends in MultiMarkdown standalone for Mac.
+
+CURRENT:
+
+?
+
+HISTORY:
+
+- Fix short options parsing in markdown.c
+
+- Performance tests - compare with a very large markdown file vs. e.g. multimarkdown based on GLib.
+	- Performance now seems approximately on par with the GLib version for massive files
+- Garbage output e.g. when processing unicode within tags: <p>←</p>
+	- This went away with removal of NSString from the GString printf-append function.
+
+	

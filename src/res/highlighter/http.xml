@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language casesensitive="true">
+    <Illegal>\S</Illegal>
+    <Contains>
+        <Contain name="number">
+            <Begin>\b\d{3}\b</Begin>
+        </Contain>
+        <Contain name="status">
+            <Begin>^HTTP/[0-9\.]+</Begin>
+            <End>$</End>
+            <RefContains>
+                <RefContain>number</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string">
+            <Begin> </Begin>
+            <End> </End>
+            <ExcludeBegin>true</ExcludeBegin>
+            <ExcludeEnd>true</ExcludeEnd>
+        </Contain>
+        <Contain name="request">
+            <Begin>^[A-Z]+ (.*?) HTTP/[0-9\.]+$</Begin>
+            <End>$</End>
+            <ReturnBegin>true</ReturnBegin>
+            <RefContains>
+                <RefContain>string</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|ref">
+            <End>$</End>
+        </Contain>
+        <Contain name="attribute">
+            <Begin>^\w</Begin>
+            <End>: </End>
+            <Illegal>\n|\s|=</Illegal>
+            <ExcludeEnd>true</ExcludeEnd>
+            <Starts>string|ref</Starts>
+        </Contain>
+        <Contain name="noname|ref">
+            <ShowClassName>false</ShowClassName>
+            <SubLanugage>badname</SubLanugage>
+            <EndsWithParent>true</EndsWithParent>
+        </Contain>
+        <Contain name="noname">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\n\n</Begin>
+            <Starts>noname|ref</Starts>
+        </Contain>
+    </Contains>
+</Language>

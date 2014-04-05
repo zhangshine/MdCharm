@@ -1,0 +1,1 @@
+$(document).ready(function()    {        try        {            /* XXXX.YYY.connect(xxx); */            //markdownWebkitHandler.updateContent.connect(updateContent);            markdownWebkitHandler.domReady();        }        catch(e)        {            alert(e);        }    }        );

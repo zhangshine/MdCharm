@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language casesensitive="false">
+    <Illegal>\S</Illegal>
+    <Keywords>
+        <Literal>true</Literal>
+        <Literal>false</Literal>
+        <Literal>null</Literal>
+    </Keywords>
+    <Contains>
+        <Contain name="backslash_escape">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\\[\s\S]</Begin>
+        </Contain>
+        <Contain name="string|quote">
+            <Begin>"</Begin>
+            <End>"</End>
+            <Illegal>\n</Illegal>
+            <Relevance>0</Relevance>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="number|c">
+            <Begin>(\b0[xX][a-fA-F0-9]+|(\b\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?)</Begin>
+        </Contain>
+        <Contain name="value" refLanguageContains="true">
+            <End>,</End>
+            <EndsWithParent>true</EndsWithParent>
+            <ExcludeEnd>true</ExcludeEnd>
+            <Keywords>
+                <Literal>true</Literal>
+                <Literal>false</Literal>
+                <Literal>null</Literal>
+            </Keywords>
+        </Contain>
+        <Contain name="attribute">
+            <Begin>\s*"</Begin>
+            <End>"\s*:\s*</End>
+            <ExcludeBegin>true</ExcludeBegin>
+            <ExcludeEnd>true</ExcludeEnd>
+            <Illegal>\n</Illegal>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+            <Starts>value</Starts>
+        </Contain>
+        <Contain name="object">
+            <ShowClassName>false</ShowClassName>
+            <Begin>{</Begin>
+            <End>}</End>
+            <Illegal>\S</Illegal>
+            <RefContains>
+                <RefContain>attribute</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="value|noname" refLanguageContains="true">
+            <ShowClassName>false</ShowClassName>
+            <End>,</End>
+            <EndsWithParent>true</EndsWithParent>
+            <ExcludeEnd>true</ExcludeEnd>
+            <Keywords>
+                <Literal>true</Literal>
+                <Literal>false</Literal>
+                <Literal>null</Literal>
+            </Keywords>
+        </Contain>
+        <Contain name="array">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\[</Begin>
+            <End>\]</End>
+            <Illegal>\S</Illegal>
+            <RefContains>
+                <RefContain>value|noname</RefContain>
+            </RefContains>
+        </Contain>
+    </Contains>
+</Language>

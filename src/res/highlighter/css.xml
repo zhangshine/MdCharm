@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language casesensitive="true">
+    <Illegal>[=/|\']</Illegal>
+    <Contains>
+        <Contain name="backslash_escape">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\\[\s\S]</Begin>
+            <Relevance>0</Relevance>
+        </Contain>
+        <Contain name="number">
+            <Begin>\b\d+(\.\d+)?</Begin>
+            <Relevance>0</Relevance>
+        </Contain>
+        <Contain name="string|apos">
+            <Begin>'</Begin>
+            <End>'</End>
+            <Illegal>\n</Illegal>
+            <Relevance>0</Relevance>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|quote">
+            <Begin>"</Begin>
+            <End>"</End>
+            <Illegal>\n</Illegal>
+            <Relevance>0</Relevance>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="function">
+            <Begin>[a-zA-Z][a-zA-Z0-9_]*\(</Begin>
+            <End>\)</End>
+            <RefContains>
+                <RefContain>number</RefContain>
+                <RefContain>string|apos</RefContain>
+                <RefContain>string|quote</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="comment|ref">
+            <Begin>/\*</Begin>
+            <End>\*/</End>
+        </Contain>
+        <Contain name="comment">
+            <Begin>/\*</Begin>
+            <End>\*/</End>
+        </Contain>
+        <Contain name="id">
+            <Begin>\#[A-Za-z0-9_-]+</Begin>
+        </Contain>
+        <Contain name="class">
+            <Begin>\.[A-Za-z0-9_-]+</Begin>
+            <Relevance>0</Relevance>
+        </Contain>
+        <Contain name="attr_selector">
+            <Begin>\[</Begin>
+            <End>\]</End>
+            <Illegal>$</Illegal>
+        </Contain>
+        <Contain name="pseudo">
+            <Begin>:(:)?[a-zA-Z0-9\_\-\+\(\)\"\']+</Begin>
+        </Contain>
+        <Contain name="at_rule">
+            <Begin>@(font-face|page)</Begin>
+            <Lexems>[a-z-]+</Lexems>
+            <Keywords>
+                <Keyword>font-face</Keyword>
+                <Keyword>page</Keyword>
+            </Keywords>
+        </Contain>
+        <Contain name="at_rule">
+            <Begin>@</Begin>
+            <End>[{;]</End>
+            <ExcludeEnd>true</ExcludeEnd>
+            <Keywords>
+                <Keyword>import</Keyword>
+                <Keyword>page</Keyword>
+                <Keyword>media</Keyword>
+                <Keyword>charset</Keyword>
+            </Keywords>
+            <RefContains>
+                <RefContain>function</RefContain>
+                <RefContain>string|apos</RefContain>
+                <RefContain>string|quote</RefContain>
+                <RefContain>number</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="tag">
+            <Begin>[a-zA-Z][a-zA-Z0-9_]*</Begin>
+            <Relevance>0</Relevance>
+        </Contain>
+        <Contain name="hexcolor">
+            <Begin>\#[0-9A-Fa-f]+</Begin>
+        </Contain>
+        <Contain name="important">
+            <Begin>!important</Begin>
+        </Contain>
+        <Contain name="value">
+            <EndsWithParent>true</EndsWithParent>
+            <ExcludeEnd>true</ExcludeEnd>
+            <RefContains>
+                <RefContain>function</RefContain>
+                <RefContain>number</RefContain>
+                <RefContain>string|quote</RefContain>
+                <RefContain>string|apos</RefContain>
+                <RefContain>comment|ref</RefContain>
+                <RefContain>hexcolor</RefContain>
+                <RefContain>important</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="attribute">
+            <Begin>[a-zA-Z\_\.\-]+</Begin>
+            <End>:</End>
+            <ExcludeEnd>true</ExcludeEnd>
+            <Illegal>[^\s]</Illegal>
+            <Starts>value</Starts>
+        </Contain>
+        <Contain name="rule">
+            <Begin>[^\s]</Begin>
+            <End>;</End>
+            <ReturnBegin>true</ReturnBegin>
+            <EndsWithParent>true</EndsWithParent>
+            <RefContains>
+                <RefContain>attribute</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="rules">
+            <Begin>{</Begin>
+            <End>}</End>
+            <Illegal>[^\s]</Illegal>
+            <Relevance>0</Relevance>
+            <RefContains>
+                <RefContain>comment|ref</RefContain>
+                <RefContain>rule</RefContain>
+            </RefContains>
+        </Contain>
+    </Contains>
+</Language>

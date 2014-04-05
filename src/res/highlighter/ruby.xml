@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language casesensitive="true">
+    <Keywords>
+        <Keyword>and</Keyword>
+        <Keyword>false</Keyword>
+        <Keyword>then</Keyword>
+        <Keyword>defined</Keyword>
+        <Keyword>module</Keyword>
+        <Keyword>in</Keyword>
+        <Keyword>return</Keyword>
+        <Keyword>redo</Keyword>
+        <Keyword>if</Keyword>
+        <Keyword>BEGIN</Keyword>
+        <Keyword>retry</Keyword>
+        <Keyword>end</Keyword>
+        <Keyword>for</Keyword>
+        <Keyword>true</Keyword>
+        <Keyword>self</Keyword>
+        <Keyword>when</Keyword>
+        <Keyword>next</Keyword>
+        <Keyword>until</Keyword>
+        <Keyword>do</Keyword>
+        <Keyword>begin</Keyword>
+        <Keyword>unless</Keyword>
+        <Keyword>END</Keyword>
+        <Keyword>rescue</Keyword>
+        <Keyword>nil</Keyword>
+        <Keyword>else</Keyword>
+        <Keyword>break</Keyword>
+        <Keyword>undef</Keyword>
+        <Keyword>not</Keyword>
+        <Keyword>super</Keyword>
+        <Keyword>class</Keyword>
+        <Keyword>case</Keyword>
+        <Keyword>require</Keyword>
+        <Keyword>yield</Keyword>
+        <Keyword>alias</Keyword>
+        <Keyword>while</Keyword>
+        <Keyword>ensure</Keyword>
+        <Keyword>elsif</Keyword>
+        <Keyword>or</Keyword>
+        <Keyword>include</Keyword>
+    </Keywords>
+    <Contains>
+        <Contain name="yardoctag">
+            <Begin>@[A-Za-z]+</Begin>
+        </Contain>
+        <Contain name="backslash_escape">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\\[\s\S]</Begin>
+        </Contain>
+        <Contain name="subst" refLanguageKeywords="true" refLanguageContains="true">
+            <Begin>#\{</Begin>
+            <End>}</End>
+            <Lexems>[a-zA-Z_][a-zA-Z0-9_]*(\!|\?)?</Lexems>
+        </Contain>
+        <Contain name="title|ref" refLanguageKeywords="true">
+            <Begin>[a-zA-Z_]\w*[!?=]?|[-+~]\@|&lt;&lt;|>>|=~|===?|&lt;=>|[&lt;>]=?|\*\*|[-/+%^&amp;*~`|]|\[\]=?</Begin>
+            <Lexems>[a-zA-Z_][a-zA-Z0-9_]*(\!|\?)?</Lexems>
+        </Contain>
+        <Contain name="method|ref">
+            <Begin>[a-zA-Z_]\w*[!?=]?|[-+~]\@|&lt;&lt;|>>|=~|===?|&lt;=>|[&lt;>]=?|\*\*|[-/+%^&amp;*~`|]|\[\]=?</Begin>
+        </Contain>
+        <Contain name="params" refLanguageKeywords="true" refLanguageContains="true">
+            <Begin>\(</Begin>
+            <End>\)</End>
+            <Lexems>[a-zA-Z_][a-zA-Z0-9_]*(\!|\?)?</Lexems>
+        </Contain>
+        <Contain name="parent|ref">
+            <Begin>([a-zA-Z][a-zA-Z0-9_]*::)?[a-zA-Z][a-zA-Z0-9_]*</Begin>
+        </Contain>
+        <!--not set ref below-->
+        <Contain name="comment|nsr1">
+            <Begin>#</Begin>
+            <End>$</End>
+            <RefContains>
+                <RefContain>yardoctag</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="comment|nsr2">
+            <Begin>^\=begin</Begin>
+            <End>^\=end</End>
+            <RefContains>
+                <RefContain>yardoctag</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="comment|nsr3">
+            <Begin>^__END__</Begin>
+            <End>\n$</End>
+        </Contain>
+        <Contain name="string|nsr1">
+            <Begin>'</Begin>
+            <End>'</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|nsr2">
+            <Begin>"</Begin>
+            <End>"</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|nsr3">
+            <Begin>%[qw]?\(</Begin>
+            <End>\)</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|nsr4">
+            <Begin>%[qw]?\[</Begin>
+            <End>\]</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|nsr5">
+            <Begin>%[qw]?{</Begin>
+            <End>}</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|nsr6">
+            <Begin>%[qw]?&lt;</Begin>
+            <End>&gt;</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|nsr7">
+            <Begin>%[qw]?/</Begin>
+            <End>/</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|nsr8">
+            <Begin>%[qw]?%</Begin>
+            <End>%</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|nsr9">
+            <Begin>%[qw]?-</Begin>
+            <End>-</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|nsr10">
+            <Begin>%[qw]?\|</Begin>
+            <End>\|</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="function">
+            <BeginWithKeyword>true</BeginWithKeyword>
+            <End> |$|;</End>
+            <Keywords>
+                <Keyword>def</Keyword>
+            </Keywords>
+            <RefContains>
+                <RefContain>title|ref</RefContain>
+                <RefContain>params</RefContain>
+                <RefContain notSetRef="true">comment|nsr1</RefContain>
+                <RefContain notSetRef="true">comment|nsr2</RefContain>
+                <RefContain notSetRef="true">comment|nsr3</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="title|ref2">
+            <Begin>[A-Za-z_]\w*(::\w+)*(\?|\!)?</Begin>
+        </Contain>
+        <Contain name="inheritance|ref">
+            <Begin>&lt;\s*</Begin>
+            <RefContains>
+                <RefContain>parent|ref</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="class">
+            <BeginWithKeyword>true</BeginWithKeyword>
+            <End>$|;</End>
+            <Keywords>
+                <Keyword>class</Keyword>
+                <Keyword>module</Keyword>
+            </Keywords>
+            <RefContains>
+                <RefContain>title|ref2</RefContain>
+                <RefContain>inheritance|ref</RefContain>
+                <RefContain notSetRef="true">comment|nsr1</RefContain>
+                <RefContain notSetRef="true">comment|nsr2</RefContain>
+                <RefContain notSetRef="true">comment|nsr3</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="constant">
+            <Begin>(::)?(\b[A-Z]\w*(::)?)+</Begin>
+        </Contain>
+        <Contain name="symbol">
+            <Begin>:</Begin>
+            <RefContains>
+                <RefContain notSetRef="true">string|nsr1</RefContain>
+                <RefContain notSetRef="true">string|nsr2</RefContain>
+                <RefContain notSetRef="true">string|nsr3</RefContain>
+                <RefContain notSetRef="true">string|nsr4</RefContain>
+                <RefContain notSetRef="true">string|nsr5</RefContain>
+                <RefContain notSetRef="true">string|nsr6</RefContain>
+                <RefContain notSetRef="true">string|nsr7</RefContain>
+                <RefContain notSetRef="true">string|nsr8</RefContain>
+                <RefContain notSetRef="true">string|nsr9</RefContain>
+                <RefContain notSetRef="true">string|nsr10</RefContain>
+                <RefContain>method|ref</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="symbol">
+            <Begin>[a-zA-Z_][a-zA-Z0-9_]*(\!|\?)?:</Begin>
+        </Contain>
+        <Contain name="number">
+            <Begin>(\b0[0-7_]+)|(\b0x[0-9a-fA-F_]+)|(\b[1-9][0-9_]*(\.[0-9_]+)?)|[0_]\b</Begin>
+        </Contain>
+        <Contain name="number">
+            <Begin>\?\w</Begin>
+        </Contain>
+        <Contain name="variable">
+            <Begin>(\$\W)|((\$|\@\@?)(\w+))</Begin>
+        </Contain>
+        <Contain name="regexp">
+            <Begin>/</Begin>
+            <End>/[a-z]*</End>
+            <Illegal>\n</Illegal>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain>subst</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="noname">
+            <ShowClassName>false</ShowClassName>
+            <Begin>((!|!=|!==|%|%=|&amp;|&amp;&amp;|&amp;=|\*|\*=|\+|\+=|,|\.|-|-=|/|/=|:|;|&lt;|&lt;&lt;|&lt;&lt;=|&lt;=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\?|\[|\{|\(|\^|\^=|\||\|=|\|\||~|\b(case|return|throw)\b)\s*)\s*</Begin>
+            <RefContains>
+                <RefContain notSetRef="true">comment|nsr1</RefContain>
+                <RefContain notSetRef="true">comment|nsr2</RefContain>
+                <RefContain notSetRef="true">comment|nsr3</RefContain>
+                <RefContain>regexp</RefContain>
+            </RefContains>
+        </Contain>
+    </Contains>
+</Language>

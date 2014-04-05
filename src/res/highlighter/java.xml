@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language casesensitive="true">
+    <Illegal>[^\s]</Illegal>
+    <Keywords>
+        <Keyword>false</Keyword>
+        <Keyword>synchronized</Keyword>
+        <Keyword>int</Keyword>
+        <Keyword>abstract</Keyword>
+        <Keyword>float</Keyword>
+        <Keyword>private</Keyword>
+        <Keyword>char</Keyword>
+        <Keyword>boolean</Keyword>
+        <Keyword>static</Keyword>
+        <Keyword>null</Keyword>
+        <Keyword>if</Keyword>
+        <Keyword>const</Keyword>
+        <Keyword>for</Keyword>
+        <Keyword>true</Keyword>
+        <Keyword>while</Keyword>
+        <Keyword>long</Keyword>
+        <Keyword>throw</Keyword>
+        <Keyword>strictfp</Keyword>
+        <Keyword>finally</Keyword>
+        <Keyword>protected</Keyword>
+        <Keyword>import</Keyword>
+        <Keyword>native</Keyword>
+        <Keyword>final</Keyword>
+        <Keyword>return</Keyword>
+        <Keyword>void</Keyword>
+        <Keyword>enum</Keyword>
+        <Keyword>else</Keyword>
+        <Keyword>break</Keyword>
+        <Keyword>transient</Keyword>
+        <Keyword>new</Keyword>
+        <Keyword>catch</Keyword>
+        <Keyword>instanceof</Keyword>
+        <Keyword>byte</Keyword>
+        <Keyword>super</Keyword>
+        <Keyword>volatile</Keyword>
+        <Keyword>case</Keyword>
+        <Keyword>assert</Keyword>
+        <Keyword>short</Keyword>
+        <Keyword>package</Keyword>
+        <Keyword>default</Keyword>
+        <Keyword>double</Keyword>
+        <Keyword>public</Keyword>
+        <Keyword>try</Keyword>
+        <Keyword>this</Keyword>
+        <Keyword>switch</Keyword>
+        <Keyword>continue</Keyword>
+        <Keyword>throws</Keyword>
+    </Keywords>
+    <Contains>
+        <Contain name="javadoctag">
+            <Begin>@[A-Za-z]+</Begin>
+        </Contain>
+        <Contain name="javadoc">
+            <Begin>/\*\*</Begin>
+            <End>\*/</End>
+            <Relevance>10</Relevance>
+            <RefContains>
+                <RefContain>javadoctag</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="comment">
+            <Begin>//</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="comment">
+            <Begin>/\*</Begin>
+            <End>\*/</End>
+        </Contain>
+        <Contain name="backslash_escape">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\\[\s\S]</Begin>
+            <Relevance>0</Relevance>
+        </Contain>
+        <Contain name="string">
+            <Begin>'</Begin>
+            <End>'</End>
+            <Illegal>\n</Illegal>
+            <Relevance>0</Relevance>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string">
+            <Begin>"</Begin>
+            <End>"</End>
+            <Illegal>\n</Illegal>
+            <Relevance>0</Relevance>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="extends">
+            <ShowClassName>false</ShowClassName>
+            <BeginWithKeyword>true</BeginWithKeyword>
+            <Relevance>10</Relevance>
+            <Keywords>
+                <Keyword>extends</Keyword>
+                <Keyword>implements</Keyword>
+            </Keywords>
+        </Contain>
+        <Contain name="title">
+            <Begin>[a-zA-Z_][a-zA-Z0-9_]*</Begin>
+        </Contain>
+        <Contain name="class">
+            <BeginWithKeyword>true</BeginWithKeyword>
+            <End>{</End>
+            <Keywords>
+                <Keyword>class</Keyword>
+                <Keyword>interface</Keyword>
+            </Keywords>
+            <Illegal>:</Illegal>
+            <RefContains>
+                <RefContain>extends</RefContain>
+                <RefContain>title</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="number">
+            <Begin>(\b0[xX][a-fA-F0-9]+|(\b\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?)</Begin>
+            <Relevance>0</Relevance>
+        </Contain>
+        <Contain name="annotation">
+            <Begin>@[A-Za-z]+</Begin>
+        </Contain>
+    </Contains>
+</Language>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language casesensitive="true">
+    <Keywords>
+        <Keyword>and</Keyword>
+        <Keyword>elif</Keyword>
+        <Keyword>is</Keyword>
+        <Keyword>global</Keyword>
+        <Keyword>as</Keyword>
+        <Keyword>in</Keyword>
+        <Keyword>if</Keyword>
+        <Keyword>from</Keyword>
+        <Keyword>raise</Keyword>
+        <Keyword>for</Keyword>
+        <Keyword>except</Keyword>
+        <Keyword>finally</Keyword>
+        <Keyword>print</Keyword>
+        <Keyword>import</Keyword>
+        <Keyword>pass</Keyword>
+        <Keyword>return</Keyword>
+        <Keyword>exec</Keyword>
+        <Keyword>else</Keyword>
+        <Keyword>break</Keyword>
+        <Keyword>not</Keyword>
+        <Keyword>with</Keyword>
+        <Keyword>class</Keyword>
+        <Keyword>assert</Keyword>
+        <Keyword>yield</Keyword>
+        <Keyword>try</Keyword>
+        <Keyword>while</Keyword>
+        <Keyword>continue</Keyword>
+        <Keyword>del</Keyword>
+        <Keyword>or</Keyword>
+        <Keyword>def</Keyword>
+        <Keyword>lambda</Keyword>
+        <Keyword>nonlocal</Keyword>
+        <BuiltIn>None</BuiltIn>
+        <BuiltIn>True</BuiltIn>
+        <BuiltIn>False</BuiltIn>
+        <BuiltIn>Ellipsis</BuiltIn>
+        <BuiltIn>NotImplemented</BuiltIn>
+    </Keywords>
+    <Contains>
+        <Contain name="title">
+            <Begin>[a-zA-Z_][a-zA-Z0-9_]*</Begin>
+        </Contain>
+        <Contain name="backslash_escape">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\\[\s\S]</Begin>
+        </Contain>
+        <!--set not ref below-->
+        <Contain name="number|c">
+            <Begin>(\b0[xX][a-fA-F0-9]+|(\b\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?)</Begin>
+        </Contain>
+        <Contain name="prompt">
+            <Begin>^(>>>|\.\.\.) </Begin>
+        </Contain>
+        <Contain name="comment">
+            <Begin>#</Begin>
+            <End>$</End>
+        </Contain>
+        <!--STRINGS-->
+        <Contain name="string|1">
+            <Begin>(u|b)?r?'''</Begin>
+            <End>'''</End>
+            <RefContains>
+                <RefContain notSetRef="true">prompt</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|2">
+            <Begin>(u|b)?r?"""</Begin>
+            <End>"""</End>
+            <RefContains>
+                <RefContain notSetRef="true">prompt</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|3">
+            <Begin>(u|r|ur)'</Begin>
+            <End>'</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|4">
+            <Begin>(u|r|ur)"</Begin>
+            <End>"</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|5">
+            <Begin>(b|br)'</Begin>
+            <End>'</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|6">
+            <Begin>(b|br)"</Begin>
+            <End>"</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|apos">
+            <Begin>'</Begin>
+            <End>'</End>
+            <Illegal>\n</Illegal>
+            <Relevance>0</Relevance>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|quote">
+            <Begin>"</Begin>
+            <End>"</End>
+            <Illegal>\n</Illegal>
+            <Relevance>0</Relevance>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <!--STRINGS-->
+        <!--set not ref up-->
+        <Contain name="params">
+            <Begin>\(</Begin>
+            <End>\)</End>
+            <RefContains refSelf="true">
+                <RefContain notSetRef="true">number|c</RefContain>
+                <RefContain notSetRef="true">prompt</RefContain>
+                <RefContain notSetRef="true">string|1</RefContain>
+                <RefContain notSetRef="true">string|2</RefContain>
+                <RefContain notSetRef="true">string|3</RefContain>
+                <RefContain notSetRef="true">string|4</RefContain>
+                <RefContain notSetRef="true">string|5</RefContain>
+                <RefContain notSetRef="true">string|6</RefContain>
+                <RefContain notSetRef="true">string|apos</RefContain>
+                <RefContain notSetRef="true">string|quote</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="function">
+            <BeginWithKeyword>true</BeginWithKeyword>
+            <End>:</End>
+            <!--<Illegal>[${=;\n</Illegal>-->
+            <Keywords>
+                <Keyword>def</Keyword>
+            </Keywords>
+            <RefContains>
+                <RefContain>title</RefContain>
+                <RefContain>params</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="class">
+            <BeginWithKeyword>true</BeginWithKeyword>
+            <End>:</End>
+            <!--<Illegal>\[\$\{=;\n</Illegal>-->
+            <Keywords>
+                <Keyword>class</Keyword>
+            </Keywords>
+            <RefContains>
+                <RefContain>title</RefContain>
+                <RefContain>params</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="decorator">
+            <Begin>@</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="python3">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\b(print|exec)\(</Begin>
+        </Contain>
+    </Contains>
+</Language>

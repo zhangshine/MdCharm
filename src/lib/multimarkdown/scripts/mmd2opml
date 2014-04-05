@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# mmd2opml --- MultiMarkdown convenience script
+#	<http://fletcherpenney.net/multimarkdown/>
+#	Fletcher T. Penney
+#
+# Pass arguments on to the binary to convert text to OPML
+#
+
+# Be sure to include multimarkdown in our PATH
+export PATH="/usr/local/bin:$PATH"
+
+if [ $# = 0 ]
+then
+	multimarkdown -t opml
+else
+until [ "$*" = "" ]
+do
+	multimarkdown -b -t opml "$1"
+	shift
+done
+fi

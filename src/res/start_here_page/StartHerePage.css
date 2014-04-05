@@ -1,0 +1,33 @@
+#MainContent
+{
+    text-align: center;
+}
+
+#logo
+{
+    height: 150px;
+    width: 300px;
+}
+
+#version_info a
+{
+    text-decoration: underline;
+    color: #77C;
+}
+
+.recentfilelist a
+{
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}
+
+#UserReq
+{
+    margin: 20px 0;
+}
+
+#UserReq a
+{
+    margin: 0 10px;
+}

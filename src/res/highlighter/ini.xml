@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language casesensitive="false">
+    <Illegal>[^\s]</Illegal>
+    <Contains>
+        <Contain name="backslash_escape">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\\[\s\S]</Begin>
+            <Relevance>0</Relevance>
+        </Contain>
+        <Contain name="string">
+            <Begin>"</Begin>
+            <End>"</End>
+            <Illegal>\n</Illegal>
+            <Relevance>0</Relevance>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="number">
+            <Begin>\b\d+(\.\d+)?</Begin>
+            <Relevance>0</Relevance>
+        </Contain>
+        <Contain name="value">
+            <EndsWithParent>true</EndsWithParent>
+            <Keywords>
+                <Keyword>on</Keyword>
+                <Keyword>off</Keyword>
+                <Keyword>true</Keyword>
+                <Keyword>false</Keyword>
+                <Keyword>yes</Keyword>
+                <Keyword>no</Keyword>
+            </Keywords>
+            <RefContains>
+                <RefContain>string</RefContain>
+                <RefContain>number</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="comment">
+            <Begin>;</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="title">
+            <Begin>^\[</Begin>
+            <End>\]</End>
+        </Contain>
+        <Contain name="setting">
+            <Begin>^[a-z0-9\[\]_-]+[ \t]*=[ \t]*</Begin>
+            <End>$</End>
+            <RefContains>
+                <RefContain>value</RefContain>
+            </RefContains>
+        </Contain>
+    </Contains>
+</Language>

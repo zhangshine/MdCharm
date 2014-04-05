@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language casesensitive="false">
+    <Contains>
+        <Contain name="command">
+            <Begin>diff</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="chunk">
+            <Begin>^\@\@ +\-\d+,\d+ +\+\d+,\d+ +\@\@$</Begin>
+        </Contain>
+        <Contain name="chunk">
+            <Begin>^\*\*\* +\d+,\d+ +\*\*\*\*$</Begin>
+        </Contain>
+        <Contain name="chunk">
+            <Begin>^\-\-\- +\d+,\d+ +\-\-\-\-$</Begin>
+        </Contain>
+        <Contain name="header">
+            <Begin>Index</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="header">
+            <Begin>=====</Begin>
+            <End>=====$</End>
+        </Contain>
+        <Contain name="header">
+            <Begin>^\-\-\-</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="header">
+            <Begin>^\+\+\+</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="header">
+            <Begin>\*{5}</Begin>
+            <End>\*{5}$</End>
+        </Contain>
+        <Contain name="addition">
+            <Begin>^\+</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="deletion">
+            <Begin>^\-</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="change">
+            <Begin>^\!</Begin>
+            <End>$</End>
+        </Contain>
+    </Contains>
+</Language>

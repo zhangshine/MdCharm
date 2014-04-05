@@ -1,0 +1,17 @@
+ipch/
+*.opensdf
+*.suo
+*.sdf
+Debug/
+Release/
+*.xcworkspace/
+xcuserdata/
+*.user
+*.exe
+leg
+peg
+*Makefile*
+Makefile.Debug
+Makefile.Release
+*.manifest
+*.o

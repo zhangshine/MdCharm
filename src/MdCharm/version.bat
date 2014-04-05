@@ -1,0 +1,1 @@
+python.exe ../../src/src/version_h.py C:/Progra~1/Git/bin/git.exe ../../src/src/version.h

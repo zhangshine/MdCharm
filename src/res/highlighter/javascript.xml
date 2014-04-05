@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language casesensitive="true">
+    <Keywords>
+        <Keyword>in</Keyword>
+        <Keyword>if</Keyword>
+        <Keyword>for</Keyword>
+        <Keyword>while</Keyword>
+        <Keyword>finally</Keyword>
+        <Keyword>var</Keyword>
+        <Keyword>new</Keyword>
+        <Keyword>function</Keyword>
+        <Keyword>do</Keyword>
+        <Keyword>return</Keyword>
+        <Keyword>void</Keyword>
+        <Keyword>else</Keyword>
+        <Keyword>break</Keyword>
+        <Keyword>catch</Keyword>
+        <Keyword>instanceof</Keyword>
+        <Keyword>with</Keyword>
+        <Keyword>throw</Keyword>
+        <Keyword>case</Keyword>
+        <Keyword>default</Keyword>
+        <Keyword>try</Keyword>
+        <Keyword>this</Keyword>
+        <Keyword>switch</Keyword>
+        <Keyword>continue</Keyword>
+        <Keyword>typeof</Keyword>
+        <Keyword>delete</Keyword>
+        <Keyword>let</Keyword>
+        <Keyword>yield</Keyword>
+        <Keyword>const</Keyword>
+        <Literal>true</Literal>
+        <Literal>false</Literal>
+        <Literal>null</Literal>
+        <Literal>undefined</Literal>
+        <Literal>NaN</Literal>
+        <Literal>Infinity</Literal>
+    </Keywords>
+    <Contains>
+        <Contain name="backslash_escape">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\\[\s\S]</Begin>
+            <Relevance>0</Relevance>
+        </Contain>
+        <Contain name="string">
+            <Begin>'</Begin>
+            <End>'</End>
+            <Illegal>\n</Illegal>
+            <Relevance>0</Relevance>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string">
+            <Begin>"</Begin>
+            <End>"</End>
+            <Illegal>\n</Illegal>
+            <Relevance>0</Relevance>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="comment">
+            <Begin>//</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="comment">
+            <Begin>/\*</Begin>
+            <End>\*/</End>
+        </Contain>
+        <Contain name="comment|line">
+            <Begin>//</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="comment|block">
+            <Begin>/\*</Begin>
+            <End>\*/</End>
+        </Contain>
+        <Contain name="number">
+            <Begin>(\b0[xX][a-fA-F0-9]+|(\b\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?)</Begin>
+            <Relevance>0</Relevance>
+        </Contain>
+        <Contain name="ref1">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\\/</Begin>
+        </Contain>
+        <Contain name="regexp">
+            <Begin>/</Begin>
+            <End>/[gim]*</End>
+            <Illegal>\n</Illegal>
+            <RefContains>
+                <RefContain>ref1</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="e4x">
+            <Begin>&lt;</Begin>
+            <End>&gt;;</End>
+            <SubLanguage>xml</SubLanguage>
+        </Contain>
+        <Contain name="value">
+            <ShowClassName>false</ShowClassName>
+            <Begin>(!|!=|!==|%|%=|&amp;|&amp;&amp;|&amp;=|\*|\*=|\+|\+=|,|\.|-|-=|/|/=|:|;|&lt;|&lt;&lt;|&lt;&lt;=|&lt;=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\?|\[|\{|\(|\^|\^=|\||\|=|\|\||~|\b(case|return|throw)\b)\s*</Begin>
+            <Relevance>0</Relevance>
+            <Keywords>
+                <Keyword>return</Keyword>
+                <Keyword>throw</Keyword>
+                <Keyword>case</Keyword>
+            </Keywords>
+            <RefContains>
+                <RefContain>comment|line</RefContain>
+                <RefContain>comment|block</RefContain>
+                <RefContain>regexp</RefContain>
+                <RefContain>e4x</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="params">
+            <Begin>\(</Begin>
+            <End>\)</End>
+            <Illegal>["'\(]</Illegal>
+            <RefContains>
+                <RefContain>comment|line</RefContain>
+                <RefContain>comment|block</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="title">
+            <Begin>[A-Za-z$_][0-9A-Za-z$_]*</Begin>
+        </Contain>
+        <Contain name="function">
+            <BeginWithKeyword>true</BeginWithKeyword>
+            <End>{</End>
+            <Illegal>\[|%</Illegal>
+            <Keywords>
+                <Keyword>function</Keyword>
+            </Keywords>
+            <RefContains>
+                <RefContain>title</RefContain>
+                <RefContain>params</RefContain>
+            </RefContains>
+        </Contain>
+    </Contains>
+</Language>

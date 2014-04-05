@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language casesensitive="true">
+    <Keywords>
+        <Keyword>if</Keyword>
+        <Keyword>then</Keyword>
+        <Keyword>else</Keyword>
+        <Keyword>elif</Keyword>
+        <Keyword>fi</Keyword>
+        <Keyword>for</Keyword>
+        <Keyword>break</Keyword>
+        <Keyword>continue</Keyword>
+        <Keyword>while</Keyword>
+        <Keyword>in</Keyword>
+        <Keyword>do</Keyword>
+        <Keyword>done</Keyword>
+        <Keyword>echo</Keyword>
+        <Keyword>exit</Keyword>
+        <Keyword>return</Keyword>
+        <Keyword>set</Keyword>
+        <Keyword>declare</Keyword>
+        <Literal>true</Literal>
+        <Literal>false</Literal>
+    </Keywords>
+    <Contains>
+        <Contain name="backslash_escape">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\\[\s\S]</Begin>
+        </Contain>
+        <Contain name="noname">
+            <Begin>''</Begin>
+        </Contain>
+        <!--not set ref-->
+        <Contain name="shebang">
+            <Begin>(#!\/bin\/bash)|(#!\/bin\/sh)</Begin>
+        </Contain>
+        <Contain name="variable|1">
+            <Begin>\$[a-zA-Z0-9_#]+</Begin>
+        </Contain>
+        <Contain name="variable|2">
+            <Begin>\${([^}]|\\})+}</Begin>
+        </Contain>
+        <Contain name="comment">
+            <Begin>#</Begin>
+            <End>$</End>
+        </Contain>
+        <Contain name="string|quote">
+            <Begin>"</Begin>
+            <End>"</End>
+            <RefContains>
+                <RefContain>backslash_escape</RefContain>
+                <RefContain notSetRef="true">variable|1</RefContain>
+                <RefContain notSetRef="true">variable|2</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="string|apos">
+            <Begin>'</Begin>
+            <End>'</End>
+            <RefContains>
+                <RefContain>noname</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="test_condition">
+            <Begin>\[</Begin>
+            <End>\]</End>
+            <RefContains>
+                <RefContain notSetRef="true">string|quote</RefContain>
+                <RefContain notSetRef="true">string|apos</RefContain>
+                <RefContain notSetRef="true">variable|1</RefContain>
+                <RefContain notSetRef="true">variable|2</RefContain>
+            </RefContains>
+            <Keywords>
+                <Literal>true</Literal>
+                <Literal>false</Literal>
+            </Keywords>
+        </Contain>
+        <Contain name="test_condition">
+            <Begin>\[\[</Begin>
+            <End>\]\]</End>
+            <RefContains>
+                <RefContain notSetRef="true">string|quote</RefContain>
+                <RefContain notSetRef="true">string|apos</RefContain>
+                <RefContain notSetRef="true">variable|1</RefContain>
+                <RefContain notSetRef="true">variable|2</RefContain>
+            </RefContains>
+            <Keywords>
+                <Literal>true</Literal>
+                <Literal>false</Literal>
+            </Keywords>
+        </Contain>
+    </Contains>
+</Language>

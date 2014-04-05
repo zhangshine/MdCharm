@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language casesensitive="false">
+    <!--for ref-->
+    <Contains>
+        <Contain name="attribute">
+            <Begin>[A-Za-z0-9\._:-]+</Begin>
+        </Contain>
+        <Contain name="value|1">
+            <Begin>"</Begin>
+            <EndsWithParent>true</EndsWithParent>
+        </Contain>
+        <Contain name="noname">
+            <ShowClassName>false</ShowClassName>
+            <Begin>="</Begin>
+            <End>"</End>
+            <ReturnBegin>true</ReturnBegin>
+            <RefContains>
+                <RefContain>value|1</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="value|2">
+            <Begin>'</Begin>
+            <EndsWithParent>true</EndsWithParent>
+        </Contain>
+        <Contain name="noname2">
+            <ShowClassName>false</ShowClassName>
+            <Begin>='</Begin>
+            <End>'</End>
+            <ReturnBegin>true</ReturnBegin>
+            <RefContains>
+                <RefContain>value|2</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="value|3">
+            <Begin>[^\s/>]+</Begin>
+        </Contain>
+        <Contain name="noname3">
+            <ShowClassName>false</ShowClassName>
+            <Begin>=</Begin>
+            <RefContains>
+                <RefContain>value|3</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="tag_internal">
+            <ShowClassName>false</ShowClassName>
+            <EndsWithParent>true</EndsWithParent>
+            <RefContains>
+                <RefContain>attribute</RefContain>
+                <RefContain>noname</RefContain>
+                <RefContain>noname2</RefContain>
+                <RefContain>noname3</RefContain>
+            </RefContains>
+        </Contain>
+        <!--main-->
+        <Contain name="pi">
+            <Begin>&lt;\?</Begin>
+            <End>\?&gt;</End>
+        </Contain>
+        <Contain name="noname4">
+            <ShowClassName>false</ShowClassName>
+            <Begin>\[</Begin>
+            <End>\]</End>
+        </Contain>
+        <Contain name="doctype">
+            <Begin>&lt;!DOCTYPE</Begin>
+            <End>&gt;</End>
+            <RefContains>
+                <RefContain>noname4</RefContain>
+            </RefContains>
+        </Contain>
+        <Contain name="comment">
+            <Begin>&lt;!--</Begin>
+            <End>--&gt;</End>
+        </Contain>
+        <Contain name="cdata">
+            <Begin>&lt;\!\[CDATA\[</Begin>
+            <End>\]\]&gt;</End>
+        </Contain>
+        <Contain name="starts_css">
+            <ShowClassName>false</ShowClassName>
+            <End>&lt;/style&gt;</End>
+            <ReturnEnd>true</ReturnEnd>
+            <SubLanguage>css</SubLanguage>
+        </Contain>
+        <Contain name="tag">
+            <Begin>&lt;style(?=\s|&gt;|$)</Begin>
+            <End>&gt;</End>
+            <Keywords>
+                <Title>style</Title>
+            </Keywords>
+            <RefContains>
+                <RefContain>tag_internal</RefContain>
+            </RefContains>
+            <Starts>starts_css</Starts>
+        </Contain>
+        <Contain name="starts_javascript">
+            <ShowClassName>false</ShowClassName>
+            <End>&lt;/script&gt;</End>
+            <ReturnEnd>true</ReturnEnd>
+            <SubLanguage>javascript</SubLanguage>
+        </Contain>
+        <Contain name="tag">
+            <Begin>&lt;script(?=\s|&gt;|$)</Begin>
+            <End>&gt;</End>
+            <Keywords>
+                <Title>script</Title>
+            </Keywords>
+            <RefContains>
+                <RefContain>tag_internal</RefContain>
+            </RefContains>
+            <Starts>starts_javascript</Starts>
+        </Contain>
+        <Contain name="vbscript">
+            <ShowClassName>false</ShowClassName>
+            <Begin>&lt;%</Begin>
+            <End>%&gt;</End>
+            <SubLanguage>javascript</SubLanguage>
+        </Contain>
+        <Contain name="title">
+            <Begin>[^ />]+</Begin>
+        </Contain>
+        <Contain name="tag">
+            <Begin>&lt;/?</Begin>
+            <End>/?&gt;</End>
+            <RefContains>
+                <RefContain>title</RefContain>
+                <RefContain>tag_internal</RefContain>
+            </RefContains>
+        </Contain>
+    </Contains>
+</Language>
