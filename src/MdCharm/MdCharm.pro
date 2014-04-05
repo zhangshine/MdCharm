@@ -56,21 +56,19 @@ INCLUDEPATH += ../lib/core ../lib/markdown/html \
                 ../lib/zlib/zlib ../lib/pcre \
                 ../lib/rapidxml
 
-CONFIG(release, debug|release){
-    version_h.target = version.h
+version_h.target = version.h
 
-    win32:version_h.commands = python.exe ../../src/MdCharm/version_h.py git.exe ../../src/MdCharm/version.h ../../src/MdCharm/mdcharm.rc release
-    unix:version_h.commands = python ../../src/MdCharm/version_h.py git ../../src/MdCharm/version.h ../../src/res/mdcharm.rc release
+win32:version_h.commands = python.exe ../../src/MdCharm/version_h.py git.exe ../../src/MdCharm/version.h ../../src/MdCharm/mdcharm.rc release
+unix:version_h.commands = python ../../src/MdCharm/version_h.py git ../../src/MdCharm/version.h ../../src/res/mdcharm.rc release
 
-    version_h.depends = version_h_nonexist
-    version_h.CONFIG += recursive
+version_h.depends = version_h_nonexist
+version_h.CONFIG += recursive
 
-    version_h_nonexist.commands= @echo generating version.h
+version_h_nonexist.commands= @echo generating version.h
 
-    QMAKE_EXTRA_TARGETS += version_h version_h_nonexist
+QMAKE_EXTRA_TARGETS += version_h version_h_nonexist
 
-    PRE_TARGETDEPS += version.h
-}
+PRE_TARGETDEPS += version.h
 
 SOURCES += \
     main.cpp \
