@@ -1,0 +1,28 @@
+#ifndef VERSION_H
+#define VERSION_H
+
+#define STRINGIFY_INTERNAL(x) #x
+#define STRINGIFY(x) STRINGIFY_INTERNAL(x)
+
+#define VERSION {0}
+const char* const VERSION_STR = STRINGIFY(VERSION);
+
+#define VERSION_MAJOR {1}
+const char* const VERSION_MAJOR_STR = STRINGIFY(VERSION_MAJOR);
+#define VERSION_MINOR {2}
+const char* const VERSION_MINOR_STR = STRINGIFY(VERSION_MINOR);
+#define VERSION_RELEASE {3}
+const char* const VERSION_RELEASE_STR = STRINGIFY(VERSION_RELEASE);
+
+#define REVISION {4}
+const char* const REVISION_STR = STRINGIFY(REVISION);
+
+#define BUILT_TIME {5}
+const char* const BUILT_TIME_STR = STRINGIFY(BUILT_TIME);
+
+#undef REVISION
+#undef BUILT_TIME
+#undef STRINGIFY_INTERNAL
+#undef STRINGIFY
+
+#endif

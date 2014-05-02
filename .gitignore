@@ -19,6 +19,7 @@
 *.a
 *.0
 *.1
-
+.idea
+/src/release
 /src/res/mdcharm.rc
 /src/MdCharm/version.h

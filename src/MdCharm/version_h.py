@@ -2,101 +2,41 @@ import os
 import sys
 from datetime import datetime
 
-version_h = """
-#ifndef VERSION_H
-#define VERSION_H
-
-#define STRINGIFY_INTERNAL(x) #x
-#define STRINGIFY(x) STRINGIFY_INTERNAL(x)
-
-#define VERSION {0}
-const char* const VERSION_STR = STRINGIFY(VERSION);
-
-#define VERSION_MAJOR {1}
-const char* const VERSION_MAJOR_STR = STRINGIFY(VERSION_MAJOR);
-#define VERSION_MINOR {2}
-const char* const VERSION_MINOR_STR = STRINGIFY(VERSION_MINOR);
-#define VERSION_RELEASE {3}
-const char* const VERSION_RELEASE_STR = STRINGIFY(VERSION_RELEASE);
-
-#define REVISION {4}
-const char* const REVISION_STR = STRINGIFY(REVISION);
-
-#define BUILT_TIME {5}
-const char* const BUILT_TIME_STR = STRINGIFY(BUILT_TIME);
-
-#undef REVISION
-#undef BUILT_TIME
-#undef STRINGIFY_INTERNAL
-#undef STRINGIFY
-
-#endif
-"""
-
-mdcharm_rc = """
-IDI_ICON1	ICON	DISCARDABLE	"mdcharm.ico"
-IDI_ICON2	ICON	DISCARDABLE	"markdown\markdown.ico"
-
-1 VERSIONINFO
-FILEVERSION {0},{1},{2},{3}
-PRODUCTVERSION {0},{1},{2},{3}
-FILEOS      0x4
-FILETYPE    0x1
-{{
-BLOCK "StringFileInfo"
-{{
-	BLOCK "040904E4"
-	{{
-		VALUE "CompanyName", "MdCharm"
-		VALUE "FileDescription", "MdCharm-Wiki Editor [msvc]"
-		VALUE "FileVersion", "{4}"
-		VALUE "InternalName", "MdCharm"
-		VALUE "LegalCopyright", "(C) MdCharm. 2012-2013"
-		VALUE "LegalTrademarks", ""
-		VALUE "OriginalFilename", "MdCharm"
-		VALUE "ProductName", "MdCharm"
-		VALUE "ProductVersion", "{4}"
-		VALUE "Comments", ""
-		VALUE "Aditional Notes", "http://www.mdcharm.com/"
-	}}
-}}
-BLOCK "VarFileInfo"
-{{
-	VALUE "Translation",0x0409,0x04E4
-}}
-}}
-"""
-
 if __name__ == '__main__':
-    if len(sys.argv)!=5:
-        sys.exit(-100)
-    if sys.argv[4]=="debug":
-        if os.path.isfile(sys.argv[2]):
+    if len(sys.argv) != 2:
+        sys.exit(1)
+    if sys.argv[1] == "debug":
+        if os.path.isfile("version.h"):
             print 'Already Exist'
             sys.exit(0)
-    GitPath = sys.argv[1]
-    revisionOutput = os.popen(GitPath + ' log -1 --format="%H"')
+    version_h = open('version.h.in').read()
+    mdcharm_rc = open('mdcharm.rc.in').read()
+    revision_output = os.popen('git log -1 --format="%H"')
     revision = None
-    if revisionOutput:
-        revision = str(revisionOutput.read()).strip()
+    if revision_output:
+        revision = str(revision_output.read()).strip()
     else:
-        sys.exit(-99)
-    tagOutput = str(os.popen(GitPath + ' tag').read()).strip()
+        sys.exit(2)
+    tag_output = str(os.popen('git tag').read()).strip()
     tag = None
-    if tagOutput:
-        tag = tagOutput.replace('\r\n', '\n').split('\n')[-1]
+    if tag_output:
+        tag = tag_output.replace('\r\n', '\n').split('\n')[-1]
     else:
-        sys.exit(-98)
+        sys.exit(3)
     if len(tag.split('.')) != 3:
-        sys.exit(-97)
-    versionList = tag.split('.')
-    ntimeStr = datetime.now().strftime('%B %d %Y %H:%M:%S +0800')
-    RealVersionH = version_h.strip().format(tag, versionList[0], versionList[1],
-                                    versionList[2], revision, ntimeStr)
-    resultFile = file(sys.argv[2], 'w+')
-    resultFile.write(RealVersionH)
-    resultFile.close()
-    RealRcFile = mdcharm_rc.format(versionList[0], versionList[1], versionList[2], 0, tag)
-    rcFile = file(sys.argv[3], 'w+')
-    rcFile.write(RealRcFile)
-    rcFile.close()
+        sys.exit(4)
+    version_list = tag.split('.')
+    ntime_str = datetime.now().strftime('%B %d %Y %H:%M:%S +0800')
+    real_version_h = version_h.strip().format(tag,
+                                              version_list[0],
+                                              version_list[1],
+                                              version_list[2],
+                                              revision,
+                                              ntime_str)
+    result_file = file("version.h", 'w+')
+    result_file.write(real_version_h)
+    result_file.close()
+    real_rc_file = mdcharm_rc.format(version_list[0], version_list[1], version_list[2], 0, tag)
+    rc_file = file("../res/mdcharm.rc", 'w+')
+    rc_file.write(real_rc_file)
+    rc_file.close()
