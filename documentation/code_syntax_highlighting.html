@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="MdCharm is a Markdown editor for Windows and Linux.">
+        <meta name="keywords" content="Markdown, Mdcharm, Markdown Editor, Documentation">
+        <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+        <title>MdCharm - A Markdown Editor</title>
+        <link type="text/css" rel="stylesheet" media="all" href="/static/css/bootstrap.css" />
+        <style>
+            body {
+                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+            }
+        </style>
+		<link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+		<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+        <link type="text/css" rel="stylesheet" media="all" href="/static/css/mdcharm.css" />
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li><img  alt="MdCharm" src="/static/img/website-logo.png"></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/download.html">Download</a></li>
+                            <li><a href="/#features">Features</a></li>
+                            <li><a href="/#screenshots">Screenshots</a></li>
+                            <li><a href="/#about">About</a></li>
+                            <!--<li><a href="/faq.html">FAQ</a></li>-->
+                            <li class="active"><a href="/documentation/index.html">Documentation</a></li>
+							<li><a href="/comments.html">Comments</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h1 style="margin-top: 0">Syntax And Shortcut</h1>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Syntax</th>
+                    <th>Example</th>
+                    <th>Shortcut</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+<pre><code>```Code Language
+Insert Your Code Here
+```</code></pre>
+                    </td>
+                    <td>
+<pre><code>```javascript
+for(var i=0; i<100; i++)
+    console.log("Hello World")
+```</code></pre>
+                    </td>
+                    <td>Ctrl+M</td>
+                </tr>
+                </tbody>
+            </table>
+            <h1>Code Syntax Highlighting</h1>
+            <h4>MdCharm supports code syntax highlighting since V0.9.8.</h4>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Language</th>
+                    <th>Status</th>
+                    <th>Since</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Bash</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>C++/C</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>C#</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>Diff</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>Http</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>Ini</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>Java</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>Javascript</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>Json</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>Markdown</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>Perl</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>Php</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>Python</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>Ruby</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>SQL</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                <tr>
+                    <td>XML</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>V0.9.8</td>
+                </tr>
+                </tbody>
+            </table>
+            <a name="custom_your_own"></a>
+            <div class="row">
+                <div class="span12">
+                    <h1>Custom Your Own Code Syntax Highlighting Style</h1>
+                </div>
+            </div>
+            <div class="alert alert-error">
+                If you have custom your own css before V0.9.8, MdCharm will append some code(below) to your custom style sheet file.
+            </div>
+            <div class="alert alert-error">
+                To create a custom style see the class reference in <a href="http://github.com/isagalaev/highlight.js/blob/master/classref.txt">http://github.com/isagalaev/highlight.js/blob/master/classref.txt</a>
+            </div>
+            Here is the default code syntax highlighting style:
+            <pre><code class="css">
+                /* code syntax highlight.
+                Documentation: http://www.mdcharm.com/documentation/code_syntax_highlighting.html
+                */
+                pre .literal,
+                pre .comment,
+                pre .template_comment,
+                pre .diff .header,
+                pre .javadoc {
+                color: #008000;
+                }
+
+                pre .keyword,
+                pre .css .rule .keyword,
+                pre .winutils,
+                pre .javascript .title,
+                pre .nginx .title,
+                pre .subst,
+                pre .request,
+                pre .status {
+                color: #0000FF;
+                font-weight: bold
+                }
+
+                pre .number,
+                pre .hexcolor,
+                pre .python .decorator,
+                pre .ruby .constant {
+                color: #0000FF;
+                }
+
+                pre .string,
+                pre .tag .value,
+                pre .phpdoc,
+                pre .tex .formula {
+                color: #D14
+                }
+
+                pre .title,
+                pre .id {
+                color: #900;
+                font-weight: bold
+                }
+
+                pre .javascript .title,
+                pre .lisp .title,
+                pre .clojure .title,
+                pre .subst {
+                font-weight: normal
+                }
+
+                pre .class .title,
+                pre .haskell .type,
+                pre .vhdl .literal,
+                pre .tex .command {
+                color: #458;
+                font-weight: bold
+                }
+
+                pre .tag,
+                pre .tag .title,
+                pre .rules .property,
+                pre .django .tag .keyword {
+                color: #000080;
+                font-weight: normal
+                }
+
+                pre .attribute,
+                pre .variable,
+                pre .lisp .body {
+                color: #008080
+                }
+
+                pre .regexp {
+                color: #009926
+                }
+
+                pre .class {
+                color: #458;
+                font-weight: bold
+                }
+
+                pre .symbol,
+                pre .ruby .symbol .string,
+                pre .lisp .keyword,
+                pre .tex .special,
+                pre .prompt {
+                color: #990073
+                }
+
+                pre .built_in,
+                pre .lisp .title,
+                pre .clojure .built_in {
+                color: #0086b3
+                }
+
+                pre .preprocessor,
+                pre .pi,
+                pre .doctype,
+                pre .shebang,
+                pre .cdata {
+                color: #999;
+                font-weight: bold
+                }
+
+                pre .deletion {
+                background: #fdd
+                }
+
+                pre .addition {
+                background: #dfd
+                }
+
+                pre .diff .change {
+                background: #0086b3
+                }
+
+                pre .chunk {
+                color: #aaa
+                }
+
+                pre .markdown .header {
+                color: #800;
+                font-weight: bold;
+                }
+
+                pre .markdown .blockquote {
+                color: #888;
+                }
+
+                pre .markdown .link_label {
+                color: #88F;
+                }
+
+                pre .markdown .strong {
+                font-weight: bold;
+                }
+
+                pre .markdown .emphasis {
+                font-style: italic;
+                }
+            </code> </pre>
+        </div>
+        <div class="align_center">
+            &copy; 2012-2013 MdCharm. All Rights Reserved.
+        </div>
+    <script src="/static/js/jquery-1.7.2.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/mdcharm.js"></script>
+    </body>
+</html>

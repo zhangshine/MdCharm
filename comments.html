@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+        <title>MdCharm - A Markdown Editor</title>
+        <link type="text/css" rel="stylesheet" media="all" href="/static/css/bootstrap.css" />
+        <style>
+            body {
+                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+            }
+        </style>
+        <link type="text/css" rel="stylesheet" media="all" href="/static/css/mdcharm.css" />
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li><img  alt="MdCharm" src="/static/img/website-logo.png"></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/download.html">Download</a></li>
+                            <li><a href="/#features">Features</a></li>
+                            <li><a href="/#screenshots">Screenshots</a></li>
+                            <li><a href="/#about">About</a></li>
+                            <!--<li><a href="/faq.html">FAQ</a></li>-->
+                            <li><a href="/documentation/index.html">Documentation</a></li>
+							<li class="active"><a href="/comments.html">Comments</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+		<div class="container">
+			<a href="/releasenotes.html">Release Notes</a>
+			<div id="disqus_thread"></div>
+			<script type="text/javascript">
+				/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+				var disqus_shortname = 'mdcharm'; // required: replace example with your forum shortname
+
+				/* * * DON'T EDIT BELOW THIS LINE * * */
+				(function() {
+					var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+					dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+					(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+				})();
+			</script>
+			<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+        <div class="align_center">
+            &copy; 2012-2013 MdCharm. All Rights Reserved.
+        </div>
+    <script src="/static/js/jquery-1.7.2.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/mdcharm.js"></script>
+    </body>
+</html>

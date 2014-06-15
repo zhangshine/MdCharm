@@ -1,0 +1,77 @@
+body
+{
+    background-image: url(/static/img/grid-18px-masked.png);
+    background-repeat: repeat-x;
+}
+
+.description
+{
+    margin-bottom: 18px;
+}
+
+.description h1
+{
+    font-weight: bold;
+    font-size: 81px;
+    line-height: 82px;
+}
+
+.description p
+{
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 30px;
+    line-height: 36px;
+}
+
+.description h1, .description p
+{
+    text-align: center;
+}
+
+.large
+{
+    font-size: 18px;
+    margin: 30px 0;
+    line-height: 26px;
+}
+
+.small
+{
+    font-size: 12px;
+}
+
+.align_center
+{
+    text-align: center;
+}
+
+.hline
+{
+    height: 1px;
+    margin-top: 40px;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #ffffff;
+}
+
+.no-fix
+{
+    margin-top: 0px;
+}
+
+.container h1
+{
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 1px solid #eeeeee;
+}
+
+.container h2
+{
+    margin-top: 40px;
+}
+
+.fix
+{
+    margin-bottom: 40px;
+}

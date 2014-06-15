@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="MdCharm is a Markdown editor for Windows and Linux.">
+        <meta name="keywords" content="Markdown, Mdcharm, Markdown Editor, Documentation">
+        <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+        <title>MdCharm - A Markdown Editor</title>
+        <link type="text/css" rel="stylesheet" media="all" href="/static/css/bootstrap.css" />
+        <style>
+            body {
+                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+            }
+        </style>
+        <link type="text/css" rel="stylesheet" media="all" href="/static/css/mdcharm.css" />
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li><img  alt="MdCharm" src="/static/img/website-logo.png"></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/download.html">Download</a></li>
+                            <li><a href="/#features">Features</a></li>
+                            <li><a href="/#screenshots">Screenshots</a></li>
+                            <li><a href="/#about">About</a></li>
+                            <!--<li><a href="/faq.html">FAQ</a></li>-->
+                            <li class="active"><a href="/documentation/index.html">Documentation</a></li>
+							<li><a href="/comments.html">Comments</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>Markdown Extra Status</h2>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Status</th>
+                    <th>Since</th>
+                    <th>Example</th>
+                    <!--<th>Html</th>-->
+                    <th>Result</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Table</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>v0.9.5</td>
+                    <td>
+                        <pre>Header 1  | Header 2
+--------- | ---------
+Cell 1    | Cell 2
+Cell 3    | Cell 4</pre>
+                    </td>
+                    <!--<td>-->
+                        <!--<pre>&lt;table&gt;-->
+    <!--&lt;thead&gt;-->
+        <!--&lt;tr&gt;-->
+            <!--&lt;th&gt;Header 1&lt;/th&gt;-->
+            <!--&lt;th&gt;Header 2&lt;/th&gt;-->
+        <!--&lt;/tr&gt;-->
+    <!--&lt;/thead&gt;-->
+    <!--&lt;tbody&gt;-->
+        <!--&lt;tr&gt;-->
+            <!--&lt;td&gt;Cell 1&lt;/td&gt;-->
+            <!--&lt;td&gt;Cell 2&lt;/td&gt;-->
+        <!--&lt;/tr&gt;-->
+        <!--&lt;tr&gt;-->
+            <!--&lt;td&gt;Cell 3&lt;/td&gt;-->
+            <!--&lt;td&gt;Cell 4&lt;/td&gt;-->
+        <!--&lt;/tr&gt;-->
+    <!--&lt;/tbody&gt;-->
+<!--&lt;/table&gt;</pre>-->
+                    <!--</td>-->
+                    <td>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Header 1</th>
+                                <th>Header 2</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Cell 1</td>
+                                <td>Cell 2</td>
+                            </tr>
+                            <tr>
+                                <td>Cell 3</td>
+                                <td>Cell 4</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Fenced code</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>v0.9.5</td>
+                    <td>
+                        <pre>~~~~~~~~~~~
+Hello World
+~~~~~~~~~~~</pre>
+                    </td>
+                    <!--<td>-->
+                        <!--<pre>&lt;pre&gt;-->
+    <!--&lt;code&gt;-->
+        <!--Hello World-->
+    <!--&lt;/code&gt;-->
+<!--&lt;/pre&gt;</pre>-->
+                    <!--</td>-->
+                    <td>
+                        <pre><code>Hello World</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Auto link</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>v0.9.5</td>
+                    <td>
+                        <pre>Welcome to http://www.mdcharm.com/</pre>
+                    </td>
+                    <!--<td>-->
+                        <!--<pre>Welcome to &lt;a href="http://www.mdcharm.com/"&gt;http://www.mdcharm.com/&lt;/a&gt;</pre>-->
+                    <!--</td>-->
+                    <td>
+                        Welcome to <a href="http://www.mdcharm.com/">http://www.mdcharm.com/</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Strike through</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>v0.9.5</td>
+                    <td>
+                        <pre>~~strike through~~</pre>
+                    </td>
+                    <!--<td>-->
+                        <!--<pre>&lt;del&gt;strike through&lt;/del&gt;</pre>-->
+                    <!--</td>-->
+                    <td>
+                        <del>strike through</del>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Superscript</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>v0.9.5</td>
+                    <td>
+                        <pre>^sometext</pre>
+                    </td>
+                    <!--<td>-->
+                        <!--<pre>&lt;sup&gt;sometext&lt;/sup&gt;</pre>-->
+                    <!--</td>-->
+                    <td>
+                        <sup>sometext</sup>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Header Id Attribute</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>v0.9.6</td>
+                    <td>
+                        <pre>Header 1    {#header1}
+========
+
+## Header 2 ##    {#header2}</pre>
+                    </td>
+                    <!--<td>-->
+                        <!--<pre>&lt;h1 id="header1"&gt;Header 1&lt;/h1&gt;-->
+
+<!--&lt;h2 id="header2"&gt;Header 2&lt;/h2&gt;</pre>-->
+                    <!--</td>-->
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Footnotes</td>
+                    <td><span class="label label-success">✔ Done</span></td>
+                    <td>v0.9.6</td>
+                    <td>
+                        <pre>That's some text with a footnote.[^1]
+
+[^1]: And that's the footnote. </pre>
+                    </td>
+                    <!--<td>-->
+                        <!--<pre>&lt;p&gt;That&#39;s some text with a footnote.&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;-->
+<!--&lt;div class="footnotes"&gt;&lt;hr /&gt;-->
+<!--&lt;ol&gt;-->
+<!--&lt;li id="fn:1"&gt;-->
+<!--&lt;p&gt;And that&#39;s the footnote. &lt;a href="#fnref:1" rev="footnote"&gt;&#8617;&lt;/a&gt;&lt;/p&gt;-->
+<!--&lt;/li&gt;&lt;/ol&gt;-->
+<!--&lt;/div&gt;</pre>-->
+                    <!--</td>-->
+                    <td>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="align_center">
+            &copy; 2012-2013 MdCharm. All Rights Reserved.
+        </div>
+    <script src="/static/js/jquery-1.7.2.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/mdcharm.js"></script>
+    </body>
+</html>
