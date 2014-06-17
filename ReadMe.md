@@ -1,7 +1,7 @@
 ### Dependencies
 #### Windows
 * Qt Creator + Qt(4.7+)
-* msvc2010
+* Windows SDK 7
 * python
 * git
 
