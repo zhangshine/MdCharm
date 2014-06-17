@@ -1,3 +1,4 @@
+CONFIG += link_pkgconfig
 win32-msvc*: {
     CONFIG += warn_off
     INCLUDEPATH += $$PWD/win
@@ -7,17 +8,22 @@ win32-msvc*: {
                 $$PWD/win/stdbool.h \
                 $$PWD/win/unistd.h
 }
-win32{
-HEADERS +=  $$PWD/glib.h \
-            $$PWD/GLibFacade.h \
+linux: {
+    PKGCONFIG += zlib glib-2.0
 }
+
+win32: {
+HEADERS +=  $$PWD/win/glib.h \
+            $$PWD/win/GLibFacade.h
+}
+
 HEADERS +=  $$PWD/markdown_lib.h \
             $$PWD/markdown_peg.h \
             $$PWD/MarkdownMacPrefix.h \
             $$PWD/parsing_functions.h \
             $$PWD/utility_functions.h \
             $$PWD/odf.h
-win32: SOURCES += $$PWD/GLibFacade.c
+win32: SOURCES += $$PWD/win/GLibFacade.c
 
 SOURCES +=  $$PWD/markdown_lib.c \
             $$PWD/markdown_output.c \

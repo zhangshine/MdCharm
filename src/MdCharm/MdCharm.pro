@@ -41,6 +41,8 @@ unix: {
     } else {
         LIBS += -L../release -lmdcharm_pcre
     }
+    CONFIG += link_pkgconfig
+    PKGCONFIG += zlib glib-2.0
 }
 
 win32 {
