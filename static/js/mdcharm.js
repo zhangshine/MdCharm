@@ -7,7 +7,7 @@ function check_os()
     if (windows)
     {
         document.getElementById("os_area").innerHTML =
-            "<a href=\"/release/1.1.6/MdCharm-Setup.exe\" class=\"btn btn-primary btn-large\" onclick=\"_gaq.push(['_trackEvent', 'Download-Windows', 'Click', 'IndexPage']);\"><span class=\"large\">Download MdCharm For Windows</span><span class=\"small\">(V1.1.6)</span><br><span class=\"small\" > Free Trial</span><br><span class=\"small\">Windows XP, Vista, and 7</span></a>"
+            "<a href=\"https://github.com/zhangshine/MdCharm/releases/download/1.0.0/MdCharm-Setup.exe\" class=\"btn btn-primary btn-large\" onclick=\"_gaq.push(['_trackEvent', 'Download-Windows', 'Click', 'IndexPage']);\"><span class=\"large\">Download MdCharm For Windows</span><span class=\"small\">(V1.1.6)</span><br><span class=\"small\" > Free Trial</span><br><span class=\"small\">Windows XP, Vista, and 7</span></a>"
         //do noting
     }
 //    } else if(mac)
