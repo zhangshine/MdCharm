@@ -1,4 +1,4 @@
-[MdCharm is no longer maintained!!!](https://github.com/zhangshine/MdCharm/issues/4)
+﻿[MdCharm is no longer maintained!!!](https://github.com/zhangshine/MdCharm/issues/4)
 
 ### Dependencies
 #### Windows
@@ -9,7 +9,8 @@
 
 
 #### Linux
-* Qt Creator + Qt(4.7+ | Qt5)
+* Qt Creator + Qt(4.7+ | Qt5.2.1+s)
+* libhunspell
 * python
 * git
 
