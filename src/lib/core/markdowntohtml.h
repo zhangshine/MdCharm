@@ -43,6 +43,15 @@ public:
     static MarkdownToHtmlResult translateMultiMarkdownToHtml(MarkdownType type,
                                         const char* data,
                                         const int length, std::string &outHtml);
+    static MarkdownToHtmlResult renderMarkdownExtarToc(MarkdownType type,
+                                                       const char* data,
+                                                       const int length, std::string &toc);
+
+    static MarkdownToHtmlResult renderToHtml(MarkdownType type,
+                                             const char *data,
+                                             const int length,
+                                             std::string &outHtml,
+                                             void (*renderFunc)(struct sd_callbacks *callbacks, struct html_renderopt *options, unsigned int render_flags));
 };
 
 #endif // MARKDOWNTOHTML_H
