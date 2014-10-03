@@ -229,15 +229,15 @@ rndr_header(struct buf *ob, const struct buf *text, const struct buf *id, int le
 	if (ob->size)
 		bufputc(ob, '\n');
 
-	if (options->flags & HTML_TOC)
-		bufprintf(ob, "<h%d id=\"toc_%d\">", level, options->toc_data.header_count++);
-    else if (id){
+    if (id) {//User custom id first
         bufprintf(ob, "<h%d id=\"", level);
         bufput(ob, id->data, id->size);
         bufput(ob, "\">", 2);
-    }
-	else
+    } else if (options->flags & HTML_TOC) {
+        bufprintf(ob, "<h%d id=\"toc_%d\">", level, options->toc_data.header_count++);
+    }  else {
 		bufprintf(ob, "<h%d>", level);
+    }
 
 	if (text) bufput(ob, text->data, text->size);
 	bufprintf(ob, "</h%d>\n", level);
