@@ -19,6 +19,9 @@ public:
     explicit TOCDockWidget(QWidget *parent = 0);
     ~TOCDockWidget();
 
+private slots:
+    void visibleChange(bool b);
+
 private:
     Ui::TOCDockWidget *ui;
 };

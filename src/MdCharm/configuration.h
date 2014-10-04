@@ -54,8 +54,12 @@ public:
     bool isUseMarkdownDefaultCSS();
     void setMarkdownCSS(bool isDefault, const QString customCSS=QString());
     QString getMarkdownCSS();
+
     void setProjectDockWidgetVisible(bool b);
     bool isProjectDockWidgetVisible();
+    void setTocDockWidgetVisible(bool b);
+    bool isTocDockWidgetVisible();
+
     void setDefaultEncoding(const QString &defaultEncoding);
     QString getDefaultEncoding();
     void setUtf8BOMOptions(MdCharmGlobal::UTF8BOM ub);
@@ -104,12 +108,6 @@ public:
     QString getKeyboardDefaultShortcut(int s);
     QString getShortcutKeyName(int s);
 
-    QString getLicense() const;
-    void setLicense(const QString &license);
-    QDateTime getLastCheckDatetime() const;
-    void setLastCheckDatetime(const QDateTime &datetime);
-    QDateTime getFirstUseDatetime() const;
-
     QString configFileDirPath();
     void writeSystemInfo();
 
@@ -134,6 +132,7 @@ private:
     static const QString RECENT_FILE_LIST;
     static const QString MARKDOWN_USE_DEFAULT_CSS;
     static const QString IS_PROJECT_DOCK_WIDGET_VISIBLE;
+    static const QString IS_TOC_DOCK_WIDGET_VISIBLE;
     static const QString DEFAULT_ENCODING;
     static const QString UTF8_BOM;
     static const QString SYNC_SCROLLBAR;
@@ -153,10 +152,6 @@ private:
     static const QString MARKDOWN_ENGINE;
     static const QString LAST_STATE_GROUP;
     static const QString SHORTCUTS_GROUP;
-
-    static const QString NATIVE_LICENSE;
-    static const QString NATIVE_LAST_CHECK_DATETIME;
-    static const QString NATIVE_FIRST_USE_DATETIME;
 
     QStringList fileTypeString;
     QStringList fileTypeSuffixString;

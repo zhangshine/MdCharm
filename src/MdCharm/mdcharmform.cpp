@@ -456,6 +456,8 @@ void MdCharmForm::initDockWidgets()
     shortcutActions.append(tocDockAction);
     viewMenu->addAction(tocDockAction);
 
+    tocDockWidget->setVisible(conf->isTocDockWidgetVisible());
+
     RotationToolButton *tocBtn = new RotationToolButton(dockBar);
     tocBtn->setDefaultAction(tocDockAction);
     tocBtn->setRotation(RotationToolButton::CounterClockwise);

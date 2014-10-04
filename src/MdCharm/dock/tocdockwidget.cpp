@@ -4,12 +4,20 @@
 
 #include "tocdockwidget.h"
 #include "ui_tocdockwidget.h"
+#include "configuration.h"
 
 TOCDockWidget::TOCDockWidget(QWidget *parent) :
     QDockWidget(parent),
     ui(new Ui::TOCDockWidget)
 {
     ui->setupUi(this);
+    connect(this, SIGNAL(visibilityChanged(bool)), this, SLOT(visibleChange(bool)));
+}
+
+void TOCDockWidget::visibleChange(bool b)
+{
+    Configuration *conf = Configuration::getInstance();
+    conf->setTocDockWidgetVisible(b);
 }
 
 TOCDockWidget::~TOCDockWidget()
