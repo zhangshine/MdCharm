@@ -26,7 +26,7 @@ public:
     ~TOCDockWidget();
 
 public slots:
-    void updateToc(MarkdownToHtml::MarkdownType type, QString &content);
+    void updateToc(MarkdownToHtml::MarkdownType type, const QString &content);
 
 signals:
     void anchorClicked(const QUrl &link);

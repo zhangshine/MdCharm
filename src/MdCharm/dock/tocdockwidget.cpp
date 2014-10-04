@@ -8,6 +8,7 @@
 #include "util/updatetocthread.h"
 
 #include <QtWebKit>
+#include <QWebFrame>
 
 TOCDockWidget::TOCDockWidget(QWidget *parent) :
     QDockWidget(parent),
@@ -59,7 +60,7 @@ TOCDockWidget::~TOCDockWidget()
     delete thread;
 }
 
-void TOCDockWidget::updateToc(MarkdownToHtml::MarkdownType type, QString &content)
+void TOCDockWidget::updateToc(MarkdownToHtml::MarkdownType type, const QString &content)
 {
     mutex.lock();
 
