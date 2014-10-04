@@ -50,6 +50,7 @@
         <file>markdown/code_syntax_patch.css</file>
         <file>conf/add.png</file>
         <file>conf/delete.png</file>
+        <file>markdown/toc.html</file>
     </qresource>
     <qresource prefix="/highlighter">
         <file>highlighter/bash.xml</file>

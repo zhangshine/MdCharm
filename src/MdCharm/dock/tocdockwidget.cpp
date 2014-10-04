@@ -7,18 +7,30 @@
 #include "configuration.h"
 #include "util/updatetocthread.h"
 
+#include <QtWebKit>
+
 TOCDockWidget::TOCDockWidget(QWidget *parent) :
     QDockWidget(parent),
     ui(new Ui::TOCDockWidget)
 {
     ui->setupUi(this);
 
+    ui->webView->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
+
     thread = new UpdateTocThread(this);
+
+    QFile htmlTemplate(":/markdown/toc.html");
+    if(htmlTemplate.open(QIODevice::ReadOnly))
+    {
+        QString htmlContent = htmlTemplate.readAll();
+        ui->webView->setHtml(htmlContent);
+        htmlTemplate.close();
+    }
 
     connect(this, SIGNAL(visibilityChanged(bool)), this, SLOT(visibleChange(bool)));
     connect(thread, SIGNAL(finished()), this, SLOT(workerFinished()));
     connect(thread, SIGNAL(workerResult(QString)), this, SLOT(updateTocContent(QString)));
-    connect(ui->textBrowser, SIGNAL(anchorClicked(QUrl)), this, SIGNAL(anchorClicked(QUrl)));
+    connect(ui->webView, SIGNAL(linkClicked(QUrl)), this, SIGNAL(anchorClicked(QUrl)));
 }
 
 void TOCDockWidget::visibleChange(bool b)
@@ -65,5 +77,5 @@ void TOCDockWidget::updateToc(MarkdownToHtml::MarkdownType type, QString &conten
 
 void TOCDockWidget::updateTocContent(const QString &result)
 {
-    ui->textBrowser->setHtml(result);
+    ui->webView->page()->currentFrame()->findFirstElement("body").setInnerXml(result);
 }
