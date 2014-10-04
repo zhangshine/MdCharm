@@ -509,7 +509,11 @@ void MdCharmForm::initSignalsAndSlots()
     connect(editAreaTabWidgetManager, SIGNAL(addToRecentFileList(QString)), this, SLOT(addToRecentFileList(QString)));
     connect(editAreaTabWidgetManager, SIGNAL(updateActions()), this, SLOT(updateActions()));
     connect(editAreaTabWidgetManager, SIGNAL(showStatusMessage(QString)), statusBar, SLOT(showMessage(QString)));
+    connect(editAreaTabWidgetManager, SIGNAL(currentTabTextChanged()), this, SLOT(updateTocContent()));
+
     connect(exportDirAction, SIGNAL(triggered()), this, SLOT(exportDirSlot()));
+
+    connect(tocDockWidget, SIGNAL(anchorClicked(QUrl)), this, SLOT(jumpToAnchor(QUrl)));
 }
 
 void MdCharmForm::initShortcutMatters()
@@ -1318,4 +1322,24 @@ void MdCharmForm::previewOptionToolBarSlot()
         return;
     conf->setPreviewOption(action->data().toInt());
     editAreaTabWidgetManager->switchPreview(action->data().toInt());
+}
+
+//--------------------- Toc ----------------------------------------------------
+void MdCharmForm::updateTocContent()
+{
+    EditAreaWidget *editArea = editAreaTabWidgetManager->getCurrentWidget();
+    if(!editArea)
+        return;
+    tocDockWidget->updateToc(conf->getMarkdownEngineType(), editArea->getText());
+}
+
+void MdCharmForm::jumpToAnchor(const QUrl &url)
+{
+    EditAreaWidget *editArea = editAreaTabWidgetManager->getCurrentWidget();
+    if(!editArea)
+        return;
+    MarkdownEditAreaWidget *meaw = qobject_cast<MarkdownEditAreaWidget *>(editArea);
+    if(!meaw)
+        return;
+    meaw->jumpToPreviewAnchor(url.fragment());
 }

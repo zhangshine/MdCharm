@@ -201,6 +201,10 @@ private slots:
 
     void markdownToolBarSlot();
     void previewOptionToolBarSlot();
+
+    void updateTocContent();
+    //Jump to Markdown Preview Page Anchor
+    void jumpToAnchor(const QUrl &url);
 signals:
     void updateRecentFileList();
     void mainWindowActived();

@@ -544,8 +544,14 @@ toc_header(struct buf *ob, const struct buf *text, const struct buf *id, int lev
 		BUFPUTSL(ob,"</li>\n<li>\n");
 	}
 
-	bufprintf(ob, "<a href=\"#toc_%d\">", options->toc_data.header_count++);
-	if (text)
+    if(id) {
+        BUFPUTSL(ob, "<a href=\"#");
+        bufput(ob, id->data, id->size);
+        bufput(ob, "\">", 2);
+    } else {
+        bufprintf(ob, "<a href=\"#toc_%d\">", options->toc_data.header_count++);
+    }
+    if (text)
 		escape_html(ob, text->data, text->size);
 	BUFPUTSL(ob, "</a>\n");
 }

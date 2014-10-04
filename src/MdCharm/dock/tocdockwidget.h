@@ -7,6 +7,7 @@
 
 #include <QDockWidget>
 #include <QMutex>
+#include <QUrl>
 
 #include "markdowntohtml.h"
 
@@ -26,6 +27,9 @@ public:
 
 public slots:
     void updateToc(MarkdownToHtml::MarkdownType type, QString &content);
+
+signals:
+    void anchorClicked(const QUrl &link);
 
 private slots:
     void visibleChange(bool b);

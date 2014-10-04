@@ -47,6 +47,7 @@ signals:
     void addToRecentFileList(QString);
     void updateActions();
     void showStatusMessage(const QString &msg);
+    void currentTabTextChanged();
 public slots:
     void closeCurrentTab();
     void checkFileStatusWhenMainWindowActived();

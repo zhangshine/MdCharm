@@ -65,6 +65,9 @@ public:
     void disableSpellCheck();
     void enableSpellCheck();
     QTextDocument* document();
+
+    void jumpToPreviewAnchor(const QString &anchor);
+
 private:
     explicit MarkdownEditAreaWidget(MarkdownEditAreaWidget &src);
     void initPreviewerMatter();
@@ -98,6 +101,7 @@ protected:
 signals:
     void addToRecentFileList(const QString &path);
     void focusInSignal();
+    void textChanged();
     
 public slots:
     void parseMarkdown();

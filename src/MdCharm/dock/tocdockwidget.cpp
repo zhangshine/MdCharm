@@ -18,6 +18,7 @@ TOCDockWidget::TOCDockWidget(QWidget *parent) :
     connect(this, SIGNAL(visibilityChanged(bool)), this, SLOT(visibleChange(bool)));
     connect(thread, SIGNAL(finished()), this, SLOT(workerFinished()));
     connect(thread, SIGNAL(workerResult(QString)), this, SLOT(updateTocContent(QString)));
+    connect(ui->textBrowser, SIGNAL(anchorClicked(QUrl)), this, SIGNAL(anchorClicked(QUrl)));
 }
 
 void TOCDockWidget::visibleChange(bool b)
