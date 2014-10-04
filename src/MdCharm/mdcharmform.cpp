@@ -30,6 +30,7 @@
 #include "util/gui/exportdirectorydialog.h"
 #include "network/checkupdates.h"
 #include "dock/projectdockwidget.h"
+#include "dock/tocdockwidget.h"
 #include "editareatabwidgetmanager.h"
 
 MdCharmForm::MdCharmForm(QWidget *parent) :
@@ -428,6 +429,7 @@ void MdCharmForm::initToolBarContent()
 
 void MdCharmForm::initDockWidgets()
 {
+    //Project
     projectDockWidget = new ProjectDockWidget(this);
     addDockWidget(Qt::LeftDockWidgetArea, projectDockWidget);
     QAction *projectDockAction = projectDockWidget->toggleViewAction();
@@ -436,13 +438,29 @@ void MdCharmForm::initDockWidgets()
     shortcutActions.append(projectDockAction);
     viewMenu->addSeparator();
     viewMenu->addAction(projectDockAction);
-    if(!conf->isProjectDockWidgetVisible())
-        projectDockWidget->setVisible(false);
+
+    projectDockWidget->setVisible(conf->isProjectDockWidgetVisible());
+
     RotationToolButton *btn = new RotationToolButton(dockBar);
     btn->setDefaultAction(projectDockAction);
     btn->setRotation(RotationToolButton::CounterClockwise);
     btn->setAutoRaise(true);
     dockBar->addWidget(btn);
+
+
+    //Toc
+    tocDockWidget = new TOCDockWidget(this);
+    addDockWidget(Qt::LeftDockWidgetArea, tocDockWidget);
+
+    QAction *tocDockAction = tocDockWidget->toggleViewAction();
+    shortcutActions.append(tocDockAction);
+    viewMenu->addAction(tocDockAction);
+
+    RotationToolButton *tocBtn = new RotationToolButton(dockBar);
+    tocBtn->setDefaultAction(tocDockAction);
+    tocBtn->setRotation(RotationToolButton::CounterClockwise);
+    tocBtn->setAutoRaise(true);
+    dockBar->addWidget(tocBtn);
 }
 
 void MdCharmForm::initSignalsAndSlots()

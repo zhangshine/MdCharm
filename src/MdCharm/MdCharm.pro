@@ -118,7 +118,8 @@ SOURCES += \
     basewebview/markdownwebview.cpp \
     util/gui/newversioninfodialog.cpp \
     util/gui/exportdirectorydialog.cpp \
-    util/gui/shortcutlineedit.cpp
+    util/gui/shortcutlineedit.cpp \
+    dock/tocdockwidget.cpp
 
 
 HEADERS += \
@@ -166,7 +167,8 @@ HEADERS += \
     basewebview/markdownwebview.h \
     util/gui/newversioninfodialog.h \
     util/gui/exportdirectorydialog.h \
-    util/gui/shortcutlineedit.h
+    util/gui/shortcutlineedit.h \
+    dock/tocdockwidget.h
 
 
 FORMS += \
@@ -185,7 +187,8 @@ FORMS += \
     util/spellcheck/spellcheckselectordialog.ui \
     util/gui/insertcodedialog.ui \
     util/gui/noticedialog.ui \
-    util/gui/exportdirectorydialog.ui
+    util/gui/exportdirectorydialog.ui \
+    dock/tocdockwidget.ui
 
 RESOURCES += \
     $$PWD/../res/MdCharm.qrc
