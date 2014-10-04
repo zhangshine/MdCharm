@@ -119,7 +119,8 @@ SOURCES += \
     util/gui/newversioninfodialog.cpp \
     util/gui/exportdirectorydialog.cpp \
     util/gui/shortcutlineedit.cpp \
-    dock/tocdockwidget.cpp
+    dock/tocdockwidget.cpp \
+    util/updatetocthread.cpp
 
 
 HEADERS += \
@@ -168,7 +169,8 @@ HEADERS += \
     util/gui/newversioninfodialog.h \
     util/gui/exportdirectorydialog.h \
     util/gui/shortcutlineedit.h \
-    dock/tocdockwidget.h
+    dock/tocdockwidget.h \
+    util/updatetocthread.h
 
 
 FORMS += \

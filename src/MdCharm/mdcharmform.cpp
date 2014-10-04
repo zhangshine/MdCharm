@@ -713,6 +713,8 @@ void MdCharmForm::updateActions()
     findAction->setEnabled(editArea->isEditActionOptionEnabled(EditAreaWidget::AllowFind));
     findNextAction->setEnabled(em.isFindVisible());
     findPreviousAction->setEnabled(em.isFindVisible());
+
+    tocDockWidget->updateToc(conf->getMarkdownEngineType(), editArea->getText());
 }
 
 void MdCharmForm::updatePreviewOptionActions(int type)
