@@ -107,12 +107,6 @@ QString ProjectDockWidget::getProjectDir()
     return projectDir;
 }
 
-void ProjectDockWidget::closeEvent(QCloseEvent *event)
-{
-    conf->setProjectDockWidgetVisible(false);
-    QDockWidget::closeEvent(event);
-}
-
 void ProjectDockWidget::keyPressEvent(QKeyEvent *event)
 {
     if(event->key()==Qt::Key_Delete){
@@ -181,8 +175,7 @@ void ProjectDockWidget::doubleClickedSlot(const QModelIndex &index)
 
 void ProjectDockWidget::visibleChange(bool visible)
 {
-    if(visible)
-        conf->setProjectDockWidgetVisible(true);
+    conf->setProjectDockWidgetVisible(visible);
 }
 
 void ProjectDockWidget::directoryChanged(QString dir)

@@ -71,6 +71,7 @@ MarkdownEditAreaWidget* EditAreaTabWidgetManager::addMarkdownEditAreaWidget(
     connect(newMEAW, SIGNAL(updateActions()), this, SLOT(updateStatus()));
     connect(newMEAW, SIGNAL(addToRecentFileList(QString)),
             this, SIGNAL(addToRecentFileList(QString)));
+    connect(newMEAW, SIGNAL(textChanged()), this, SIGNAL(currentTabTextChanged()));
     return newMEAW;
 }
 

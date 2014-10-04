@@ -42,6 +42,13 @@ MarkdownToHtml::translateMarkdownExtraToHtml(MarkdownToHtml::MarkdownType type,
                                         const char *data,
                                         const int length, string &outHtml)
 {
+    return renderToHtml(type, data, length, outHtml, sdhtml_renderer);
+}
+
+MarkdownToHtml::MarkdownToHtmlResult
+MarkdownToHtml::renderToHtml(MarkdownToHtml::MarkdownType type, const char *data, const int length, string &outHtml,
+                             void (*renderFunc)(struct sd_callbacks *callbacks, struct html_renderopt *options, unsigned int render_flags))
+{
     if (length == 0) //length is 0, just return
         return NOTHING;
 
@@ -67,7 +74,7 @@ MarkdownToHtml::translateMarkdownExtraToHtml(MarkdownToHtml::MarkdownType type,
         return ERROR;
     }
 
-    sdhtml_renderer(&callbacks, &options, 0);
+    renderFunc(&callbacks, &options, HTML_TOC);
     if(type==Markdown)
         extension = 0;
     else if(type==PHPMarkdownExtra)
@@ -76,7 +83,6 @@ MarkdownToHtml::translateMarkdownExtraToHtml(MarkdownToHtml::MarkdownType type,
             |MKDEXT_FENCED_CODE
             |MKDEXT_AUTOLINK
             |MKDEXT_STRIKETHROUGH
-//            |MKDEXT_SPACE_HEADERS
             |MKDEXT_SUPERSCRIPT
             |MKDEXT_LAX_SPACING
             |MKDEXT_HEADER_ID_ATTRIBUTE
@@ -108,4 +114,19 @@ MarkdownToHtml::translateMultiMarkdownToHtml(MarkdownType type, const char *data
     outHtml.append(result);
     free(result);
     return SUCCESS;
+}
+
+/**
+ * @brief MarkdownToHtml::renderMarkdownExtarToc Get toc
+ * @param type
+ * @param data
+ * @param length
+ * @param toc
+ * @return
+ */
+MarkdownToHtml::MarkdownToHtmlResult
+MarkdownToHtml::renderMarkdownExtarToc(MarkdownType type, const char *data,
+                                       const int length, string &toc)
+{
+    return renderToHtml(type, data, length, toc, sdhtml_toc_renderer);
 }

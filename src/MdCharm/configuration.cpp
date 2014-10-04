@@ -37,6 +37,7 @@ const QString Configuration::IS_CHECK_FOR_UPDATES = QString::fromLatin1("Common/
 const QString Configuration::RECENT_FILE_LIST = QString::fromLatin1("Common/RecentFiles");
 const QString Configuration::MARKDOWN_USE_DEFAULT_CSS = QString::fromLatin1("Styles/MarkdownDefaultCSSPath");
 const QString Configuration::IS_PROJECT_DOCK_WIDGET_VISIBLE = QString::fromLatin1("Dock/ProjectDockWidgetVisible");
+const QString Configuration::IS_TOC_DOCK_WIDGET_VISIBLE = QString::fromLatin1("Dock/TocDockWidgetVisible");
 const QString Configuration::DEFAULT_ENCODING = QString::fromLatin1("TextEditor/DefaultEncoding");
 const QString Configuration::UTF8_BOM = QString::fromLatin1("TextEditor/Utf8Bom");
 const QString Configuration::SYNC_SCROLLBAR = QString::fromLatin1("Behavior/SyncScrollbar");
@@ -56,10 +57,6 @@ const QString Configuration::RIGHT_MARGIN_COLUMN = QString::fromLatin1("TextEdit
 const QString Configuration::MARKDOWN_ENGINE = QString::fromLatin1("Common/MarkdownEngine");
 const QString Configuration::LAST_STATE_GROUP = QString::fromLatin1("LastState/");
 const QString Configuration::SHORTCUTS_GROUP = QString::fromLatin1("Shortcuts/");
-
-const QString Configuration::NATIVE_LICENSE = QString::fromLatin1("License/License");
-const QString Configuration::NATIVE_LAST_CHECK_DATETIME = QString::fromLatin1("License/LastCheckDatetime");
-const QString Configuration::NATIVE_FIRST_USE_DATETIME = QString::fromLatin1("License/FirstUseDatetime");
 
 Configuration::Configuration()
 {
@@ -414,6 +411,22 @@ bool Configuration::isProjectDockWidgetVisible()
     else
     {
         setProjectDockWidgetVisible(true);
+        return true;
+    }
+}
+
+void Configuration::setTocDockWidgetVisible(bool b)
+{
+    settings->setValue(IS_TOC_DOCK_WIDGET_VISIBLE, b);
+}
+
+bool Configuration::isTocDockWidgetVisible()
+{
+    QVariant var = settings->value(IS_TOC_DOCK_WIDGET_VISIBLE);
+    if(var.isValid() && var.canConvert(QVariant::Bool))
+        return var.toBool();
+    else {
+        setTocDockWidgetVisible(true);
         return true;
     }
 }
@@ -1013,48 +1026,5 @@ QString Configuration::getKeyboardDefaultShortcut(int s)
             Q_ASSERT(0 && "This should not be happen");
             return QString("");
             break;
-    }
-}
-
-//------------------ License -------------------------
-void Configuration::setLicense(const QString &license)
-{
-    regSettings->setValue(NATIVE_LICENSE, license);
-}
-
-QString Configuration::getLicense() const
-{
-    QVariant var = regSettings->value(NATIVE_LICENSE);
-    if(var.isValid() && var.canConvert(QVariant::String)){
-        return var.toString();
-    } else {
-        return QString();
-    }
-}
-
-void Configuration::setLastCheckDatetime(const QDateTime &datetime)
-{
-    regSettings->setValue(NATIVE_LAST_CHECK_DATETIME, datetime);
-}
-
-QDateTime Configuration::getLastCheckDatetime() const
-{
-    QVariant var = regSettings->value(NATIVE_LAST_CHECK_DATETIME);
-    if(var.isValid() && var.canConvert(QVariant::DateTime)){
-        return var.toDateTime();
-    } else {
-
-        return QDateTime();
-    }
-}
-
-QDateTime Configuration::getFirstUseDatetime() const
-{
-    QVariant var = regSettings->value(NATIVE_FIRST_USE_DATETIME);
-    if(var.isValid() && var.canConvert(QVariant::DateTime)){
-        return var.toDateTime();
-    } else {
-        regSettings->setValue(NATIVE_FIRST_USE_DATETIME, QDateTime::currentDateTime());//First use
-        return QDateTime::currentDateTime();
     }
 }

@@ -11,6 +11,7 @@ class EditAreaWidget;
 class EditAreaTabWidgetManager;
 class CheckUpdates;
 class ProjectDockWidget;
+class TOCDockWidget;
 class StatusBarLabel;
 class MarkdownCheatSheetDialog;
 class Configuration;
@@ -124,6 +125,7 @@ private:
 
     //Dock Widgets
     ProjectDockWidget *projectDockWidget;
+    TOCDockWidget *tocDockWidget;
 
     //other
     QClipboard *clipboard;
@@ -199,6 +201,10 @@ private slots:
 
     void markdownToolBarSlot();
     void previewOptionToolBarSlot();
+
+    void updateTocContent();
+    //Jump to Markdown Preview Page Anchor
+    void jumpToAnchor(const QUrl &url);
 signals:
     void updateRecentFileList();
     void mainWindowActived();

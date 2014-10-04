@@ -30,6 +30,7 @@
 #include "util/gui/exportdirectorydialog.h"
 #include "network/checkupdates.h"
 #include "dock/projectdockwidget.h"
+#include "dock/tocdockwidget.h"
 #include "editareatabwidgetmanager.h"
 
 MdCharmForm::MdCharmForm(QWidget *parent) :
@@ -428,6 +429,7 @@ void MdCharmForm::initToolBarContent()
 
 void MdCharmForm::initDockWidgets()
 {
+    //Project
     projectDockWidget = new ProjectDockWidget(this);
     addDockWidget(Qt::LeftDockWidgetArea, projectDockWidget);
     QAction *projectDockAction = projectDockWidget->toggleViewAction();
@@ -436,13 +438,31 @@ void MdCharmForm::initDockWidgets()
     shortcutActions.append(projectDockAction);
     viewMenu->addSeparator();
     viewMenu->addAction(projectDockAction);
-    if(!conf->isProjectDockWidgetVisible())
-        projectDockWidget->setVisible(false);
+
+    projectDockWidget->setVisible(conf->isProjectDockWidgetVisible());
+
     RotationToolButton *btn = new RotationToolButton(dockBar);
     btn->setDefaultAction(projectDockAction);
     btn->setRotation(RotationToolButton::CounterClockwise);
     btn->setAutoRaise(true);
     dockBar->addWidget(btn);
+
+
+    //Toc
+    tocDockWidget = new TOCDockWidget(this);
+    addDockWidget(Qt::LeftDockWidgetArea, tocDockWidget);
+
+    QAction *tocDockAction = tocDockWidget->toggleViewAction();
+    shortcutActions.append(tocDockAction);
+    viewMenu->addAction(tocDockAction);
+
+    tocDockWidget->setVisible(conf->isTocDockWidgetVisible());
+
+    RotationToolButton *tocBtn = new RotationToolButton(dockBar);
+    tocBtn->setDefaultAction(tocDockAction);
+    tocBtn->setRotation(RotationToolButton::CounterClockwise);
+    tocBtn->setAutoRaise(true);
+    dockBar->addWidget(tocBtn);
 }
 
 void MdCharmForm::initSignalsAndSlots()
@@ -489,7 +509,11 @@ void MdCharmForm::initSignalsAndSlots()
     connect(editAreaTabWidgetManager, SIGNAL(addToRecentFileList(QString)), this, SLOT(addToRecentFileList(QString)));
     connect(editAreaTabWidgetManager, SIGNAL(updateActions()), this, SLOT(updateActions()));
     connect(editAreaTabWidgetManager, SIGNAL(showStatusMessage(QString)), statusBar, SLOT(showMessage(QString)));
+    connect(editAreaTabWidgetManager, SIGNAL(currentTabTextChanged()), this, SLOT(updateTocContent()));
+
     connect(exportDirAction, SIGNAL(triggered()), this, SLOT(exportDirSlot()));
+
+    connect(tocDockWidget, SIGNAL(anchorClicked(QUrl)), this, SLOT(jumpToAnchor(QUrl)));
 }
 
 void MdCharmForm::initShortcutMatters()
@@ -693,6 +717,8 @@ void MdCharmForm::updateActions()
     findAction->setEnabled(editArea->isEditActionOptionEnabled(EditAreaWidget::AllowFind));
     findNextAction->setEnabled(em.isFindVisible());
     findPreviousAction->setEnabled(em.isFindVisible());
+
+    tocDockWidget->updateToc(conf->getMarkdownEngineType(), editArea->getText());
 }
 
 void MdCharmForm::updatePreviewOptionActions(int type)
@@ -1296,4 +1322,24 @@ void MdCharmForm::previewOptionToolBarSlot()
         return;
     conf->setPreviewOption(action->data().toInt());
     editAreaTabWidgetManager->switchPreview(action->data().toInt());
+}
+
+//--------------------- Toc ----------------------------------------------------
+void MdCharmForm::updateTocContent()
+{
+    EditAreaWidget *editArea = editAreaTabWidgetManager->getCurrentWidget();
+    if(!editArea)
+        return;
+    tocDockWidget->updateToc(conf->getMarkdownEngineType(), editArea->getText());
+}
+
+void MdCharmForm::jumpToAnchor(const QUrl &url)
+{
+    EditAreaWidget *editArea = editAreaTabWidgetManager->getCurrentWidget();
+    if(!editArea)
+        return;
+    MarkdownEditAreaWidget *meaw = qobject_cast<MarkdownEditAreaWidget *>(editArea);
+    if(!meaw)
+        return;
+    meaw->jumpToPreviewAnchor(url.fragment());
 }

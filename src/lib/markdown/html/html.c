@@ -229,15 +229,15 @@ rndr_header(struct buf *ob, const struct buf *text, const struct buf *id, int le
 	if (ob->size)
 		bufputc(ob, '\n');
 
-	if (options->flags & HTML_TOC)
-		bufprintf(ob, "<h%d id=\"toc_%d\">", level, options->toc_data.header_count++);
-    else if (id){
+    if (id) {//User custom id first
         bufprintf(ob, "<h%d id=\"", level);
         bufput(ob, id->data, id->size);
         bufput(ob, "\">", 2);
-    }
-	else
+    } else if (options->flags & HTML_TOC) {
+        bufprintf(ob, "<h%d id=\"toc_%d\">", level, options->toc_data.header_count++);
+    }  else {
 		bufprintf(ob, "<h%d>", level);
+    }
 
 	if (text) bufput(ob, text->data, text->size);
 	bufprintf(ob, "</h%d>\n", level);
@@ -544,8 +544,14 @@ toc_header(struct buf *ob, const struct buf *text, const struct buf *id, int lev
 		BUFPUTSL(ob,"</li>\n<li>\n");
 	}
 
-	bufprintf(ob, "<a href=\"#toc_%d\">", options->toc_data.header_count++);
-	if (text)
+    if(id) {
+        BUFPUTSL(ob, "<a href=\"#");
+        bufput(ob, id->data, id->size);
+        bufput(ob, "\">", 2);
+    } else {
+        bufprintf(ob, "<a href=\"#toc_%d\">", options->toc_data.header_count++);
+    }
+    if (text)
 		escape_html(ob, text->data, text->size);
 	BUFPUTSL(ob, "</a>\n");
 }
@@ -570,7 +576,7 @@ toc_finalize(struct buf *ob, void *opaque)
 }
 
 void
-sdhtml_toc_renderer(struct sd_callbacks *callbacks, struct html_renderopt *options)
+sdhtml_toc_renderer(struct sd_callbacks *callbacks, struct html_renderopt *options, unsigned int render_flags)
 {
 	static const struct sd_callbacks cb_default = {
 		NULL,

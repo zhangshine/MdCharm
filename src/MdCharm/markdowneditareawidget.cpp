@@ -235,6 +235,8 @@ void MarkdownEditAreaWidget::initSignalsAndSlots()
             this, SIGNAL(updateActions()));
     connect(editor, SIGNAL(overWriteModeChanged()),
                      this, SLOT(overWriteModeChanged()));
+    connect(editor, SIGNAL(textChanged()), this, SIGNAL(textChanged()));
+
     connect(findAndReplaceWidget, SIGNAL(findText(QString,QTextDocument::FindFlags,bool, bool)),
                      editor, SLOT(findAndHighlightText(QString, QTextDocument::FindFlags,bool, bool)));
     connect(findAndReplaceWidget, SIGNAL(findHide()),
@@ -788,6 +790,12 @@ std::string MarkdownEditAreaWidget::convertMarkdownToHtml()
     MarkdownToHtml::translateMarkdownToHtml(conf->getMarkdownEngineType(), content.data(), content.length(), textResult);
     return textResult;
 }
+
+void MarkdownEditAreaWidget::jumpToPreviewAnchor(const QString &anchor)
+{
+    previewer->page()->currentFrame()->scrollToAnchor(anchor);
+}
+
 //-------------------------------- Clone ---------------------------------------
 MarkdownEditAreaWidget::MarkdownEditAreaWidget(MarkdownEditAreaWidget &src) :
     EditAreaWidget(src)
