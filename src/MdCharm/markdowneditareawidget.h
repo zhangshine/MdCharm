@@ -81,6 +81,7 @@ private:
     std::string convertMarkdownToHtml();
 public:
     virtual EditAreaWidget* clone();
+    QString getProDir();
 private:
     MdCharmForm *mainForm;
     QSplitter *splitter;

@@ -222,6 +222,8 @@ QString MdCharmGlobal::getShortDescriptionText(int s)
 
 QString Utils::AppName = QString::fromLatin1("MdCharm");
 const char* Utils::AppNameCStr = "MdCharm";
+QStringList Utils::ImageExts = QStringList() << "png" << "jpg" << "jpeg" << "ico" << "gif";
+
 
 QString Utils::getSaveFileName(const QString &suffix, QWidget *parent,
                                const QString &caption, const QString &dir,

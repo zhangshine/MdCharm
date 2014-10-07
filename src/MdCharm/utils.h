@@ -172,6 +172,8 @@ public:
     static QString translateMarkdown2Html(MarkdownToHtml::MarkdownType type, const QString &content);
     static QString readFile(const QString &filePath);
     static QString getHtmlTemplate();
+
+    static QStringList ImageExts;
 public:
     static QString AppName;
     static const char* AppNameCStr;
