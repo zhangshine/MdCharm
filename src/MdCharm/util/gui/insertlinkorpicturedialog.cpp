@@ -8,7 +8,7 @@
 #include "configuration.h"
 #include "markdowntohtml.h"
 
-InsertLinkOrPictureDialog::InsertLinkOrPictureDialog(int type, QString proDir, QWidget *parent) :
+InsertLinkOrPictureDialog::InsertLinkOrPictureDialog(int type, const QString proDir, QWidget *parent) :
     QDialog(parent, Qt::WindowTitleHint|Qt::WindowSystemMenuHint),
     ui(new Ui::InsertLinkOrPictureDialog),
     proDir(proDir)

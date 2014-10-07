@@ -14,7 +14,7 @@ class InsertLinkOrPictureDialog : public QDialog
     Q_OBJECT
     
 public:
-    explicit InsertLinkOrPictureDialog(int type, QString proDir=QString(), QWidget *parent = 0);
+    explicit InsertLinkOrPictureDialog(int type, const QString proDir=QString(), QWidget *parent = 0);
     ~InsertLinkOrPictureDialog();
     const QString getText() const;
     const QString getUrl() const;

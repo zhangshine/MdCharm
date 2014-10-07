@@ -700,12 +700,17 @@ QTextDocument* MarkdownEditAreaWidget::document()
     return editor->document();
 }
 
-void MarkdownEditAreaWidget::insertLinkOrPicture(int type)
+QString MarkdownEditAreaWidget::getProDir()
 {
     QString proDir = mainForm->getProjectDockWidget()->getProjectDir();
     if(!fm->getFileFullPath().startsWith(proDir))
         proDir = QFileInfo(fm->getFileFullPath()).absolutePath();
-    InsertLinkOrPictureDialog insertPLDialog(type, proDir, this);
+    return proDir;
+}
+
+void MarkdownEditAreaWidget::insertLinkOrPicture(int type)
+{
+    InsertLinkOrPictureDialog insertPLDialog(type, getProDir(), this);
     if(QDialog::Accepted==insertPLDialog.exec()){
         editor->insertLinkOrPicuture(type, insertPLDialog.getText(),
                                      insertPLDialog.getUrl(),

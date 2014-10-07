@@ -2,22 +2,29 @@
 #include <QMenu>
 #include <QClipboard>
 #include <QApplication>
+#include <QDragEnterEvent>
+#include <QMimeData>
+#include <QUrl>
+#include <QProcess>
 
 #include "markdowneditor.h"
 #include "markdowntohtml.h"
 #include "configuration.h"
 #include "markdownautocompleter.h"
 #include "resource.h"
+#include "markdowneditareawidget.h"
 #include "util/spellcheck/spellchecker.h"
 
-MarkdownEditor::MarkdownEditor(QWidget *parent):
-    BaseEditor(parent)
+MarkdownEditor::MarkdownEditor(MarkdownEditAreaWidget *parent):
+    BaseEditor(parent),
+    parent(parent)
 {
     mdcharmGlobalInstance = MdCharmGlobal::getInstance();
     copyAsHtmlAction = new QAction(tr("Copy as Html"), this);
     autoCompleter = new MarkdownAutoCompleter(this);
     connect(copyAsHtmlAction, SIGNAL(triggered()), this, SLOT(copyAsHtmlSlot()));
     setFrameShape(QTextEdit::NoFrame);
+    setAcceptDrops(true);
 }
 
 void MarkdownEditor::keyPressEvent(QKeyEvent *event)
@@ -101,6 +108,52 @@ void MarkdownEditor::contextMenuEvent(QContextMenuEvent *e)
         }
     }
     menu->deleteLater();
+}
+
+void MarkdownEditor::dragEnterEvent(QDragEnterEvent *e)
+{
+    if (e->mimeData()->hasUrls()||e->mimeData()->hasFormat("text/uri-list")) {
+        e->acceptProposedAction();
+        e->accept();
+    } else {
+        BaseEditor::dragEnterEvent(e);
+    }
+}
+
+void MarkdownEditor::dragMoveEvent(QDragMoveEvent *e)
+{
+    if (e->mimeData()->hasUrls()||e->mimeData()->hasFormat("text/uri-list")) {
+        e->acceptProposedAction();
+        e->accept();
+    } else {
+        BaseEditor::dragMoveEvent(e);
+    }
+}
+
+void MarkdownEditor::dropEvent(QDropEvent *e)
+{
+    if(e->mimeData()->hasUrls()||e->mimeData()->hasFormat("text/uri-list")){
+        QStringList ignoredUrls;
+        setTextCursor(cursorForPosition(e->pos()));
+        QDir current(parent->getProDir());
+        foreach (QUrl url, e->mimeData()->urls()) {
+            QString urlStr = url.toString();
+            QFileInfo fileInfo(urlStr);
+            QString ext = fileInfo.suffix();
+            if(Utils::ImageExts.contains(ext)){//Images
+                insertLinkOrPicuture(MdCharmGlobal::ShortcutInsertPicture, fileInfo.fileName(), current.relativeFilePath(url.toLocalFile()));
+            } else if (!url.isLocalFile())//external link
+                insertLinkOrPicuture(MdCharmGlobal::ShortcutInsertLink, urlStr, urlStr);
+            else
+                ignoredUrls.append(url.toLocalFile());
+        }
+        if(!ignoredUrls.isEmpty()){
+            QProcess::startDetached(qApp->applicationFilePath(), ignoredUrls);
+        }
+        e->accept();
+    } else {
+        BaseEditor::dropEvent(e);
+    }
 }
 
 void MarkdownEditor::replaceTextInCurrentCursor(const QString &text)
