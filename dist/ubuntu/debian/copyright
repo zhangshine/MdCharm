@@ -1,0 +1,11 @@
+Format: http://dep.debian.net/deps/dep5
+Upstream-Name: mdcharm
+Source: http://www.mdcharm.com/
+
+Files: *
+Copyright: 2012-2014 MdCharm
+
+All Rights Reserved.
+
+# Please also look if there are files or directories which have a
+# different copyright/license attached and list them here.

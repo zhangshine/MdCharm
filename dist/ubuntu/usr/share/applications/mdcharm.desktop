@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=0.9
+Encoding=UTF-8
+Name=MdCharm
+Exec=/usr/bin/mdcharm
+Comment=Markdown Editor
+Icon=/usr/share/mdcharm/mdcharm.png
+Terminal=false
+Categories=Application;Qt;Office;
+StartupNotify=false
+Name[en_US]=mdcharm
