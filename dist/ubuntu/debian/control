@@ -1,0 +1,16 @@
+Source: mdcharm
+Section: utils
+Priority: optional
+Maintainer: mdcharm<admin@mdcharm.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.2
+Homepage: http://www.mdcharm.com/
+#Vcs-Git: git://git.debian.org/collab-maint/mdcharm.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/mdcharm.git;a=summary
+
+Package: mdcharm
+Architecture: amd64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: MdCharm is a wiki editor, currently it supports markdown and multi-markdown.
+ Check us out at http://www.mdcharm.com/ 
+

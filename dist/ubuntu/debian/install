@@ -1,0 +1,9 @@
+usr/bin/mdcharm usr/bin
+usr/share/mdcharm/mdcharm.png usr/share/mdcharm
+usr/share/applications/mdcharm.desktop usr/share/applications
+usr/share/mdcharm/spellcheckdict/en_GB.aff /usr/share/mdcharm/spellcheckdict
+usr/share/mdcharm/spellcheckdict/en_GB.dic /usr/share/mdcharm/spellcheckdict
+usr/share/mdcharm/spellcheckdict/en_US.aff /usr/share/mdcharm/spellcheckdict
+usr/share/mdcharm/spellcheckdict/en_US.dic /usr/share/mdcharm/spellcheckdict
+usr/share/mdcharm/spellcheckdict/README_en_GB.txt /usr/share/mdcharm/spellcheckdict
+usr/share/mdcharm/spellcheckdict/README_en_US.txt /usr/share/mdcharm/spellcheckdict
