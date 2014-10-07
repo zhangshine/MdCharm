@@ -1,4 +1,4 @@
-mdcharm (1.1.6) stable; urgency=low
+mdcharm (1.2) stable; urgency=low
 
   * [Close] #6 add a Toc tab (like the current project tab that work on headings) todo 
   * [Close] #7 add drag'n drop for images or external web links todo 
