@@ -136,17 +136,54 @@ void MarkdownEditor::dropEvent(QDropEvent *e)
         QStringList ignoredUrls;
         setTextCursor(cursorForPosition(e->pos()));
         QDir current(parent->getProDir());
-        foreach (QUrl url, e->mimeData()->urls()) {
-            QString urlStr = url.toString();
-            QFileInfo fileInfo(urlStr);
-            QString ext = fileInfo.suffix();
-            if(Utils::ImageExts.contains(ext)){//Images
-                insertLinkOrPicuture(MdCharmGlobal::ShortcutInsertPicture, fileInfo.fileName(), current.relativeFilePath(url.toLocalFile()));
-            } else if (!url.isLocalFile())//external link
-                insertLinkOrPicuture(MdCharmGlobal::ShortcutInsertLink, urlStr, urlStr);
-            else
-                ignoredUrls.append(url.toLocalFile());
+
+        bool processAsText = true;
+
+        if(e->mimeData()->hasText()){
+            QUrl url(e->mimeData()->text());
+            if(!url.isValid() || url.isLocalFile())
+                processAsText = false;
+        } else {
+            processAsText = false;
         }
+
+        if(processAsText) {//Process as plain text
+            QUrl url(e->mimeData()->text());
+            if(url.isValid()){
+                QString urlStr = url.toString();
+                QFileInfo fileInfo(urlStr);
+                QString ext = fileInfo.suffix();
+                if(Utils::ImageExts.contains(ext)){//Images
+                    if(url.isLocalFile())
+                        insertLinkOrPicuture(MdCharmGlobal::ShortcutInsertPicture, fileInfo.fileName(), current.relativeFilePath(QFileInfo(url.toLocalFile()).absoluteFilePath()));
+                    else
+                        insertLinkOrPicuture(MdCharmGlobal::ShortcutInsertPicture, fileInfo.fileName(), urlStr);
+                } else if (!url.isLocalFile())//external link
+                    insertLinkOrPicuture(MdCharmGlobal::ShortcutInsertLink, urlStr, urlStr);
+                else
+                    ignoredUrls.append(url.toLocalFile());
+            }
+        } else {
+            QList<QUrl> urls = e->mimeData()->urls();
+            foreach (QUrl url, urls) {
+                if(!url.isValid())
+                    continue;
+
+                QString urlStr = url.toString();
+                QFileInfo fileInfo(urlStr);
+                QString ext = fileInfo.suffix();
+                if(Utils::ImageExts.contains(ext)){//Images
+                    if(url.isLocalFile())
+                        insertLinkOrPicuture(MdCharmGlobal::ShortcutInsertPicture, fileInfo.fileName(), current.relativeFilePath(QFileInfo(url.toLocalFile()).absoluteFilePath()));
+                    else
+                        insertLinkOrPicuture(MdCharmGlobal::ShortcutInsertPicture, fileInfo.fileName(), urlStr);
+                } else if (!url.isLocalFile())//external link
+                    insertLinkOrPicuture(MdCharmGlobal::ShortcutInsertLink, urlStr, urlStr);
+                else
+                    ignoredUrls.append(url.toLocalFile());
+            }
+        }
+
         if(!ignoredUrls.isEmpty()){
             QProcess::startDetached(qApp->applicationFilePath(), ignoredUrls);
         }
