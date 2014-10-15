@@ -283,7 +283,7 @@ void MarkdownEditAreaWidget::setText(const QString &text)
 
 QString MarkdownEditAreaWidget::getText()
 {
-    return editor->toPlainText().toUtf8();
+    return editor->toPlainText();
 }
 
 void MarkdownEditAreaWidget::resizeEvent(QResizeEvent *event)
