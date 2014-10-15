@@ -15,9 +15,9 @@ void UpdateTocThread::run()
         emit workerResult(QString());
     } else {
         std::string stdResult;
-        std::string stdContent = this->content.toStdString();
-        MarkdownToHtml::renderMarkdownExtarToc(this->type, stdContent.c_str(), stdContent.length(), stdResult);
-        emit workerResult(QString::fromStdString(stdResult));
+        QByteArray content = this->content.toUtf8();
+        MarkdownToHtml::renderMarkdownExtarToc(this->type, content.data(), content.length(), stdResult);
+        emit workerResult(QString::fromUtf8(stdResult.c_str(), stdResult.length()));
     }
 }
 
