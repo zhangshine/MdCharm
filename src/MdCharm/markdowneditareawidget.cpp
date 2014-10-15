@@ -703,7 +703,7 @@ QTextDocument* MarkdownEditAreaWidget::document()
 QString MarkdownEditAreaWidget::getProDir()
 {
     QString proDir = mainForm->getProjectDockWidget()->getProjectDir();
-    if(!fm->getFileFullPath().startsWith(proDir))
+    if(proDir.isEmpty() || !fm->getFileFullPath().startsWith(proDir))
         proDir = QFileInfo(fm->getFileFullPath()).absolutePath();
     return proDir;
 }
