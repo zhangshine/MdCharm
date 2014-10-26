@@ -83,6 +83,8 @@ public:
     void setAppendCodeSyntaxCss(bool b);
     void setLastOpenDir(const QString& dir);
     const QString getLastOpenDir();
+    bool isHideFileExtensionInProjectDock();
+    void setHideFileExtensionInProjectDock(bool b);
     void setFileExtension(const QStringList& extensions);
     int getLastFilterType();
     void setLastFilterType(int ft);
@@ -143,6 +145,7 @@ private:
     static const QString WINDOW_STATE;
     static const QString APPEND_CODE_SYNTAX_CSS;
     static const QString LAST_OPEN_DIR;
+    static const QString HIDE_FILE_EXT_IN_PROJECT_DOCK;
     static const QString FILE_EXTENSION;
     static const QString LAST_FILTER_TYPE;
     static const QString AUTO_INDENTATION;

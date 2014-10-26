@@ -48,6 +48,7 @@ const QString Configuration::GEOMETRY_STATE = QString::fromLatin1("MdCharmState/
 const QString Configuration::WINDOW_STATE = QString::fromLatin1("MdCharmState/WindowState");
 const QString Configuration::APPEND_CODE_SYNTAX_CSS = QString::fromLatin1("MdCharmUpdate/AppendCodeSyntaxCss");
 const QString Configuration::LAST_OPEN_DIR = QString::fromLatin1("MdCharmState/LastOpenDir");
+const QString Configuration::HIDE_FILE_EXT_IN_PROJECT_DOCK = QString::fromLatin1("MdCharmState/HideFileExtInProjectDock");
 const QString Configuration::LAST_FILTER_TYPE = QString::fromLatin1("MdCharmState/LastFilterType");//Same as the FileType enum
 const QString Configuration::FILE_EXTENSION = QString::fromLatin1("Common/FileExtension");
 const QString Configuration::AUTO_INDENTATION = QString::fromLatin1("TextEditor/AutoIndentation");
@@ -653,6 +654,20 @@ const QString Configuration::getLastOpenDir()
         return var.toString();
     else
         return QDir::homePath();
+}
+
+bool Configuration::isHideFileExtensionInProjectDock()
+{
+    QVariant var = settings->value(HIDE_FILE_EXT_IN_PROJECT_DOCK);
+    if(var.isValid() && var.canConvert(QVariant::String))
+        return var.toBool();
+    else
+        return false;
+}
+
+void Configuration::setHideFileExtensionInProjectDock(bool b)
+{
+    settings->setValue(HIDE_FILE_EXT_IN_PROJECT_DOCK, b);
 }
 
 void Configuration::setFileExtension(const QStringList &extensions)

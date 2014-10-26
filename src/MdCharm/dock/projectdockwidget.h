@@ -54,6 +54,7 @@ private slots:
     void renameFile();
     void visibleChange(bool b);
     void directoryChanged(QString dir);
+    void hideFileExt(bool b);
 private:
     Ui::ProjectDockWidget *ui;
     FileSystemModel* fileSystemModel;
@@ -68,6 +69,7 @@ private:
     QAction* openFileAction;
     QAction* renameFileAction;
     QAction* deleteFileAction;
+    QAction* hideFileExtAction;
 
     QString projectDir;
 };

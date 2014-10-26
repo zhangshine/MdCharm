@@ -9,7 +9,7 @@
 
 
 #### Linux
-* Qt Creator + Qt(4.7+ | Qt5.2.1+s)
+* Qt Creator + Qt(4.7+ | Qt5.2.1+)
 * libhunspell
 * python
 * git

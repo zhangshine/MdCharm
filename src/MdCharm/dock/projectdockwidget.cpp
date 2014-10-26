@@ -53,6 +53,9 @@ void ProjectDockWidget::initMenuAndAction()
     openFileAction = new QAction(tr("Open file"), this);
     renameFileAction = new QAction(tr("Rename..."), this);
     deleteFileAction = new QAction(tr("Delete..."), this);
+    hideFileExtAction = new QAction(tr("Hide file extension"), this);
+    hideFileExtAction->setCheckable(true);
+    hideFileExtAction->setChecked(conf->isHideFileExtensionInProjectDock());
 }
 
 void ProjectDockWidget::initSignalsAndSlots()
@@ -69,6 +72,8 @@ void ProjectDockWidget::initSignalsAndSlots()
             this, SLOT(renameFile()));
     connect(deleteFileAction, SIGNAL(triggered()),
             this, SLOT(deleteFile()));
+    connect(hideFileExtAction, SIGNAL(triggered(bool)),
+            this, SLOT(hideFileExt(bool)));
     connect(projectTreeView, SIGNAL(doubleClicked(QModelIndex)),
             this, SLOT(doubleClickedSlot(QModelIndex)));
     connect(this, SIGNAL(visibilityChanged(bool)),
@@ -134,6 +139,9 @@ void ProjectDockWidget::prepareDirectoryMenu(const QString &dirPath)
     directoryMenu->addAction(addNewAction);
     showInExplorerAction->setData(dirPath);
     directoryMenu->addAction(showInExplorerAction);
+#ifdef Q_OS_WIN
+    directoryMenu->addAction(hideFileExtAction);
+#endif
 }
 
 void ProjectDockWidget::prepareFileMenu(const QString &filePath)
@@ -147,6 +155,9 @@ void ProjectDockWidget::prepareFileMenu(const QString &filePath)
     fileMenu->addAction(renameFileAction);
     deleteFileAction->setData(filePath);
     fileMenu->addAction(deleteFileAction);
+#ifdef Q_OS_WIN
+    fileMenu->addAction(hideFileExtAction);
+#endif
 }
 
 void ProjectDockWidget::openFile()
@@ -197,6 +208,13 @@ void ProjectDockWidget::renameFile()
     if(QDialog::Accepted==rfd.exec()){
         emit renameFileSignal(renameFileAction->data().toString(), rfd.getNewFilePath());
     }
+}
+
+void ProjectDockWidget::hideFileExt(bool b)
+{
+    conf->setHideFileExtensionInProjectDock(b);
+    //reload
+    this->setProjectDir(this->getProjectDir());
 }
 
 //------------------- Drag and Drop ----------------------------------------

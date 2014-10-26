@@ -1,4 +1,5 @@
 #include "filesystemmodel.h"
+#include "configuration.h"
 
 #include <QFileInfo>
 
@@ -14,15 +15,10 @@ FileNode::FileNode(FileSystemModel *model, const QString &path, FileNode *parent
     model(model),
     parent(parent),
     children(0),
-    path(path)
+    path(path),
+    fileInfo(path)
 {
-    QFileInfo info(path);
-    if(parent && parent->getParent() == NULL){
-        text = info.absoluteFilePath();
-    } else {
-        text = info.fileName();
-    }
-    if(info.isDir() && !path.isEmpty()){
+    if(fileInfo.isDir() && !path.isEmpty()){
         model->getFileWatcher()->addPath(path);
     }
 }
@@ -79,22 +75,43 @@ QString FileNode::getPath() const
 
 QString FileNode::getText() const
 {
-    return text;
+    if(parent && parent->getParent() == NULL){
+        return fileInfo.absoluteFilePath();
+    } else {
+        return fileInfo.fileName();
+    }
+}
+
+QString FileNode::getName() const
+{
+    if(parent && parent->getParent() == NULL){
+        return fileInfo.absoluteFilePath();
+    } else {
+        Configuration *conf = Configuration::getInstance();
+        if(conf->isHideFileExtensionInProjectDock()){
+            QString name = fileInfo.baseName();
+            if(name.isEmpty())
+                return fileInfo.fileName();
+            else
+                return name;
+        } else
+            return fileInfo.fileName();
+    }
 }
 
 bool FileNode::isDir() const
 {
-    return QFileInfo(path).isDir();
+    return fileInfo.isDir();
 }
 
 bool FileNode::isFile() const
 {
-    return QFileInfo(path).isFile();
+    return fileInfo.isFile();
 }
 
-QFileInfo FileNode::fileInfo() const
+QFileInfo FileNode::getFileInfo() const
 {
-    return QFileInfo(path);
+    return fileInfo;
 }
 
 void FileNode::clear()
@@ -111,8 +128,8 @@ void FileNode::reload()
     if(children==NULL)
         children = new QList<FileNode*>();
     if(!path.isEmpty()){
-        QFileInfo info(path);
-        if(info.isDir()){
+        fileInfo = QFileInfo(path);
+        if(fileInfo.isDir()){
             QDir dir(path);
             foreach(QFileInfo childInfo, dir.entryInfoList(model->getFilter(), model->getSort())){
                 children->append(new FileNode(model, childInfo.absoluteFilePath(), this));
@@ -239,7 +256,7 @@ FileNode* FileSystemModel::nodeFromIndex(const QModelIndex &index) const
 
 QFileInfo FileSystemModel::fileInfo(const QModelIndex &index) const
 {
-    return nodeFromIndex(index)->fileInfo();
+    return nodeFromIndex(index)->getFileInfo();
 }
 
 int FileSystemModel::rowCount(const QModelIndex &parent) const
@@ -278,13 +295,13 @@ QVariant FileSystemModel::data(const QModelIndex &index, int role) const
     switch (role) {
         case Qt::DisplayRole:
 #ifdef Q_OS_WIN
-            return node->getText().replace("/", "\\");
+            return node->getName().replace("/", "\\");
 #else
-            return node->getText();
+            return node->getName();
 #endif
             break;
         case Qt::DecorationRole:
-            return iconProvider->icon(node->fileInfo());
+            return iconProvider->icon(node->getFileInfo());
             break;
         case Qt::FontRole:
             {

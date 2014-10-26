@@ -22,7 +22,8 @@ public:
     QList<FileNode *>* getChildren();
     QString getPath() const;
     QString getText() const;
-    QFileInfo fileInfo() const;
+    QString getName() const;
+    QFileInfo getFileInfo() const;
     bool isDir() const;
     bool isFile() const;
     void clear();
@@ -33,7 +34,7 @@ private:
     FileNode *parent;
     QList<FileNode *> *children;
     QString path;
-    QString text;
+    QFileInfo fileInfo;
 };
 
 class FileSystemModel : public QAbstractItemModel
