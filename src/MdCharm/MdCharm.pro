@@ -14,14 +14,14 @@ CONFIG(debug, debug|release){ #debug
     DEFINES += MDCHARM_DEBUG
     TARGET = MdCharm_d
     DESTDIR = ../debug/
-    LIBS += -L../debug -lgbreakpad_d -lcore
+    LIBS += -L../debug -lcore
 } else { #release
     DEFINES += NDEBUG
     DEFINES += QT_NO_DEBUG_OUTPUT
     TARGET = MdCharm
     unix:TARGET = mdcharm
     DESTDIR = ../release/
-    LIBS += -L../release -lgbreakpad -lcore
+    LIBS += -L../release -lcore
 }
 #Fix for hunspell
 win32-msvc*: {
@@ -35,14 +35,18 @@ win32-msvc*: {
 
 unix: {
     INCLUDEPATH +=../lib/pcre
-    LIBS += -lhunspell
     CONFIG(debug, debug|release){
         LIBS += -L../debug -lmdcharm_pcre
     } else {
         LIBS += -L../release -lmdcharm_pcre
     }
+    QT_CONFIG -= no-pkg-config
     CONFIG += link_pkgconfig
-    PKGCONFIG += zlib glib-2.0
+    PKGCONFIG += glib-2.0 hunspell
+}
+
+macx {
+    LIBS += -lz
 }
 
 win32 {

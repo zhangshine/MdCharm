@@ -11,8 +11,9 @@ win32-msvc*: {
                 $$PWD/win/glib.h \
                 $$PWD/win/GLibFacade.h
 } else {
+    QT_CONFIG -= no-pkg-config
     CONFIG += link_pkgconfig
-    PKGCONFIG += zlib glib-2.0
+    PKGCONFIG += glib-2.0
 }
 
 HEADERS +=  $$PWD/markdown_lib.h \

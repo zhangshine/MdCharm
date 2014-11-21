@@ -48,14 +48,6 @@ int main(int argc, char** argv)
         startTime = QTime::currentTime();
     }
 
-    BreakpadQt::GlobalHandler *handler = BreakpadQt::GlobalHandler::instance();
-    handler->setDumpPath(QDir::tempPath());
-#ifdef Q_OS_LINUX
-    handler->setReporter(qApp->applicationDirPath().append("/mdcharm_crashrpt"));
-#else
-    handler->setReporter(qApp->applicationDirPath().append("/crashrpt"));
-#endif
-    handler->appendArgument(conf->configFileDirPath().append("/sysinfo.txt"));
     if(conf->isCheckSpell())
         MdCharmGlobal::getInstance();
     QStringList argsList = app.arguments();

@@ -1,11 +1,7 @@
 #include "spellchecker.h"
 #include "utils.h"
 #include "configuration.h"
-#ifdef Q_OS_WIN
 #include "hunspell.hxx"
-#else
-#include "hunspell/hunspell.hxx"
-#endif
 
 #include <QFile>
 #include <QTextStream>

@@ -266,7 +266,11 @@ QString Utils::getSaveFileName(const QString &suffix, QWidget *parent,
         }
     } while(filePath.isEmpty());
 #elif defined(Q_OS_MAC)
-    assert(0);//TODO: MAC OS X
+    filePath = QFileDialog::getSaveFileName(parent,
+                                            caption,
+                                            dir,
+                                            filter,
+                                            selectedFilter);
 #endif
     return filePath;
 }

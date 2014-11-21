@@ -117,6 +117,8 @@ GlobalHandlerPrivate::GlobalHandlerPrivate()
 {
 #if defined(Q_OS_WIN32)
     handler_ = new google_breakpad::ExceptionHandler(/*DumpPath*/ QDir::tempPath().toStdWString(), /*FilterCallback*/ 0, DumpCallback, /*context*/ 0, true);
+#elif defined(Q_OS_MAC)
+    handler_ = new google_breakpad::ExceptionHandler(QDir::tempPath().toStdString(), 0, DumpCallback, 0, true, NULL);
 #else
     handler_ = new google_breakpad::ExceptionHandler(QDir::tempPath().toStdString(), 0, DumpCallback, 0, true);
 #endif

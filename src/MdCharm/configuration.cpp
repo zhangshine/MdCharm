@@ -270,13 +270,12 @@ bool Configuration::isShowSplash()
         return var.toBool();
     else
     {
-#ifdef Q_OS_LINUX
-        setShowSplash(false);
-        return false;
-#endif
-#ifdef Q_OS_WIN
+#if Q_OS_WIN
         setShowSplash(true);
         return true;
+#else
+        setShowSplash(false);
+        return false;
 #endif
     }
 }
@@ -298,11 +297,11 @@ void Configuration::writeSystemInfo()
     QString osVersion;
 #ifdef Q_OS_WIN
     osVersion = QString::fromLatin1("Windows %1").arg(QSysInfo::windowsVersion());
+#elif Q_OS_LINUX
+    osVersion = QString::fromLatin1("Linux");
+#else
+    osVersion = QString::fromLatin1("Mac OS X %1").arg(QSysInfo::macVersion());
 #endif
-    if(osVersion.isEmpty())
-    {
-        osVersion = QString::fromLatin1("Linux");
-    }
     QString fileContent = QString::fromLatin1("MdCharm Version: %1\n"
                                               "MdCharm Revision: %2\n"
                                               "Program File Location: %3\n"
